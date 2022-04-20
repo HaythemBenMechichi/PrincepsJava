@@ -14,15 +14,14 @@ public class Produit {
     private int id,quantite;
     private String libelle, description,image_p;
     private float prix;
-    Sous_categorie a = new Sous_categorie();
+    Sous_categorie sous = new Sous_categorie();
     public Produit(String libelle ,int quantite, String description, String image_p, float prix,Sous_categorie a) {
-        
         this.quantite = quantite;
         this.libelle = libelle;
         this.description = description;
         this.image_p = image_p;
         this.prix = prix;
-        this.a = a;
+        this.sous = a;
     }
     
     public int getId() {
@@ -54,11 +53,11 @@ public class Produit {
     }
 
     public Sous_categorie getA() {
-        return a;
+        return sous;
     }
 
     public void setA(Sous_categorie a) {
-        this.a = a;
+        this.sous = a;
     }
     
 
@@ -84,7 +83,7 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "produit{" +" libelle=" + libelle + " ,quantite=" + quantite + " , description=" + description +  " , image_p=" + image_p + " , prix=" + prix + ",sous_categorie="+ a.nom_sous +'}';
+        return "produit{" +" libelle=" + libelle + " ,quantite=" + quantite + " , description=" + description +  " , image_p=" + image_p + " , prix=" + prix + ",sous_categorie="+ sous.nom_sous +'}';
     }
 
     @Override

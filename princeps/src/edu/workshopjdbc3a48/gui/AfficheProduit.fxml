@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.AfficheProduitController">
+   <children>
+      <TableView fx:id="tableProd" layoutX="66.0" layoutY="75.0" prefHeight="287.0" prefWidth="484.0">
+        <columns>
+          <TableColumn fx:id="colLibelle" prefWidth="75.0" text="Libelle" />
+          <TableColumn fx:id="colQuantite" prefWidth="75.0" text="Quanitite" />
+            <TableColumn fx:id="colPrix" prefWidth="75.0" text="Prix" />
+            <TableColumn fx:id="colSous" prefWidth="75.0" text="Sou-Categorie" />
+            <TableColumn fx:id="colDescription" prefWidth="183.0" text="Description" />
+        </columns>
+      </TableView>
+      <Label layoutX="178.0" layoutY="24.0" text="Liste Des Produit">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

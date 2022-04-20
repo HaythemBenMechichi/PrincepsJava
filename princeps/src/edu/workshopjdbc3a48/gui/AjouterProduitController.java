@@ -45,28 +45,22 @@ public class AjouterProduitController implements Initializable {
     @FXML
     private ChoiceBox<Sous_categorie> chbCat;
     @FXML
-    private Button btnAjouter;
-    @FXML
     private TextArea tfDescription;
     @FXML
-    private ImageView imgview;
+    private Button btnAjouter;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-       
            ServicePersonne sp = new ServicePersonne();
             ServiceCategorie cp = new ServiceCategorie();
-            
                    List<Sous_categorie> list = new ArrayList<>();
                    list= cp.geAllSousCat();
                     for (int i = 0; i < list.size(); i++) {
                     chbCat.getItems().add(list.get(i));
                     }
-            
         // TODO 
     }    
     
@@ -87,11 +81,6 @@ public class AjouterProduitController implements Initializable {
         }
     }
 
-    @FXML
-    private void imageclick(MouseEvent event) {
-  
-    
-    }
  
     
 }
