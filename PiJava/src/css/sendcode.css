@@ -1,0 +1,11 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.btn{
+    -fx-background-color: #242529;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #ffffff;
+    
+}
+

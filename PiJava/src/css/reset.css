@@ -1,0 +1,17 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.btn{
+    -fx-background-color: #242529;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #ffffff;
+    
+}
+.tf_box{
+    -fx-background-color: transparent;
+    -fx-border-color: #DEDEE4;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-prompt-text-fill: #898585;
+    -fx-text-fill: #0e1343;
+}

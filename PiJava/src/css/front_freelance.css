@@ -1,0 +1,17 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.hover_border:hover{
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+}
+
+.bg_img{
+    -fx-background-image: url("/Images/BackgroundF.png");
+    width: 100%;
+}
+
+.cursor_hand{
+    -fx-cursor: hand;
+}

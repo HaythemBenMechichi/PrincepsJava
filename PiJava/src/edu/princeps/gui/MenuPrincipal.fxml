@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.princeps.gui.MenuPrincipal">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb01fcb" height="500.0" stroke="BLACK" strokeType="INSIDE" width="191.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ccf5a36e" height="200.0" layoutX="216.0" layoutY="186.0" stroke="#00000070" strokeType="INSIDE" width="459.0" />
+      <Label layoutX="284.0" layoutY="61.0" prefHeight="68.0" prefWidth="323.0" text="Menu principal">
+         <font>
+            <Font name="Arial Black" size="33.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_Ajouter" layoutX="276.0" layoutY="263.0" mnemonicParsing="false" onAction="#afficherEvenement" prefHeight="48.0" prefWidth="119.0" text="Evénement" />
+      <Button fx:id="btn_Afficher" layoutX="494.0" layoutY="263.0" mnemonicParsing="false" onAction="#afficherPromotion" prefHeight="48.0" prefWidth="119.0" text="Promotion" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="31.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/DMA9%202.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="55.0" layoutY="194.0" prefHeight="21.0" prefWidth="75.0" text="Princeps" textFill="#568638">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

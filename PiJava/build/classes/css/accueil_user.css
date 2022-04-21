@@ -1,0 +1,18 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.hover_border:hover{
+    -fx-border-color: #0fbcf9;
+    -fx-border-width: 0px 0px 0px 2px;
+    -fx-background-color: #34e7e4e0;
+    -fx-cursor: hand;
+}
+
+.cursor_hand{
+    -fx-cursor: hand;
+}

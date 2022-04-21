@@ -1,0 +1,39 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+
+
+    .tf_box{
+    -fx-background-color: transparent;
+    -fx-border-color: #DEDEE4;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-prompt-text-fill: WHITE;
+    -fx-text-fill: #0e1343;
+}
+
+.btn{
+    -fx-background-color: #0e1343;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #ffffff;
+    
+}
+.pane{
+   -fx-background-color: #242529; 
+}
+.tf_box2{
+    -fx-background-color: #DEB887	;
+    -fx-border-color: #DEDEE4;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-prompt-text-fill: WHITE;
+    -fx-text-fill: #0e1343;
+}
+
+.trans-btn-white-border{
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-text-fill: whitesmoke;
+}
