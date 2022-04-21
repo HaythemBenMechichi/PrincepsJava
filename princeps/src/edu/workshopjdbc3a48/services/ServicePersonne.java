@@ -10,11 +10,14 @@ import edu.workshopjdbc3a48.entities.Produit;
 import edu.workshopjdbc3a48.entities.Sous_categorie;
 import edu.workshopjdbc3a48.utils.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author abdelazizmezri
@@ -60,10 +63,30 @@ public class ServicePersonne implements IService<Produit> {
         }
     }
 
+    
+    
+     public void SupprimerNom(String libelle){
+       
+       String requete = "delete from produit where libelle=?";
+        try {
+          PreparedStatement ps = cnx.prepareStatement(requete);
+            ps.setString(1,libelle);
+            ps.executeUpdate();
+            System.out.println("Suppression effectuée avec succès");
+        } catch (SQLException ex) {
+            assert libelle !=null;
+           Logger.getLogger(ServicePersonne.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors de la suppression "+ex.getMessage());
+        }
+    }
+    
+    
+    
+    
     @Override
     public void modifier(Produit p) {
         try {
-            String req = "UPDATE produit SET `libelle` = '" + p.getLibelle() + "', `prix` = '" + p.getPrix() +  "', `description` = '" + p.getDescription()   +  "', `quantite` = '" + p.getQuantite()  +   "', `quantite` = '" + p.getQuantite()+ "' WHERE `produit`.`id` = " + p.getId();
+            String req = "UPDATE produit SET `libelle` = '" + p.getLibelle() + "', `prix` = '" + p.getPrix() +  "', `description` = '" + p.getDescription()   +  "', `quantite` = '" + p.getQuantite()  +   "', `quantite` = '" + p.getQuantite()+"', `id_sous_cat_id` = '" + p.getA().getId()+ "' WHERE `produit`.`id` = " + p.getId();
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("Personne updated !");
@@ -118,6 +141,34 @@ public class ServicePersonne implements IService<Produit> {
     }
     
     
+
+
+
+
+
+    
+    public Sous_categorie getSousCatId(String nom_sous)
+    {
+        Sous_categorie cp = new Sous_categorie();
+         try {
+            String req = "Select * from sous_categorie where sous_categorie.nom_sous=" + nom_sous;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                Categorie cat= new Categorie();
+                cat=getCat(rs.getInt("id_cat_id"));
+                Sous_categorie c = new Sous_categorie(rs.getInt("id"), rs.getInt("stat_sc"), rs.getString("nom_sous"),cat);
+            //    System.out.println("p="+c);
+                return c;
+             }
+         }
+         catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return (cp);
+    }
+
+
     
     
     @Override
@@ -130,9 +181,9 @@ public class ServicePersonne implements IService<Produit> {
             while(rs.next()){
                 Sous_categorie s = new Sous_categorie();
                 s = getSousCat(rs.getInt("id_sous_cat_id"));
-                System.out.println("s = "+s);
+               // System.out.println("s = "+s);
                 Produit p = new Produit( rs.getString("libelle"), rs.getInt("quantite"),rs.getString("description"),rs.getString("image_p"),rs.getFloat("prix"),s);
-                System.out.println("p="+p);
+               // System.out.println("p="+p);
                 list.add(p);
             }
                   

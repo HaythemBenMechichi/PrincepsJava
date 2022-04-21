@@ -1,26 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.AfficheProduitController">
+<AnchorPane id="AnchorPane" prefHeight="611.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.AfficheProduitController">
    <children>
-      <TableView fx:id="tableProd" layoutX="66.0" layoutY="75.0" prefHeight="287.0" prefWidth="484.0">
+      <TableView fx:id="tableProd" layoutX="255.0" layoutY="115.0" onMouseClicked="#rowClicked" prefHeight="218.0" prefWidth="485.0">
         <columns>
           <TableColumn fx:id="colLibelle" prefWidth="75.0" text="Libelle" />
           <TableColumn fx:id="colQuantite" prefWidth="75.0" text="Quanitite" />
             <TableColumn fx:id="colPrix" prefWidth="75.0" text="Prix" />
             <TableColumn fx:id="colSous" prefWidth="75.0" text="Sou-Categorie" />
             <TableColumn fx:id="colDescription" prefWidth="183.0" text="Description" />
+            <TableColumn fx:id="colId" prefWidth="75.0" text="id" visible="false" />
         </columns>
       </TableView>
-      <Label layoutX="178.0" layoutY="24.0" text="Liste Des Produit">
+      <Label layoutX="288.0" layoutY="34.0" text="Liste Des Produit">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
+      <Button fx:id="suppButton" layoutX="524.0" layoutY="518.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="104.0" text="Supprimer" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae1f" height="634.0" layoutX="-103.0" layoutY="-17.0" stroke="BLACK" strokeType="INSIDE" width="252.0" />
+      <Button fx:id="btn_Retour" layoutX="33.0" layoutY="552.0" mnemonicParsing="false" onAction="#RetourMenu" prefHeight="31.0" prefWidth="77.0" text="Retour">
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="642.0" layoutY="518.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="95.0" text="Update" />
+      <Text layoutX="238.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle" />
+      <TextField fx:id="tfQuantite" layoutX="231.0" layoutY="423.0" />
+      <TextField fx:id="tfLibelle" layoutX="231.0" layoutY="363.0" />
+      <Text layoutX="240.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="quantite" />
+      <TextField fx:id="tfPrix" layoutX="231.0" layoutY="480.0" />
+      <TextArea fx:id="tfDescription" layoutX="524.0" layoutY="376.0" prefHeight="119.0" prefWidth="200.0" />
+      <Text layoutX="581.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+      <Text layoutX="244.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SousCategorie" />
+      <ChoiceBox fx:id="chbCat" layoutX="231.0" layoutY="543.0" prefWidth="150.0" />
+      <Label layoutX="241.0" layoutY="456.0" text="prix" />
+      <TextField fx:id="tfId" layoutX="426.0" layoutY="383.0" prefHeight="25.0" prefWidth="34.0" visible="false" />
    </children>
 </AnchorPane>

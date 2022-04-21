@@ -15,13 +15,38 @@ public class Produit {
     private String libelle, description,image_p;
     private float prix;
     Sous_categorie sous = new Sous_categorie();
-    public Produit(String libelle ,int quantite, String description, String image_p, float prix,Sous_categorie a) {
+    
+    
+    public Produit()
+    {
+        
+    }
+  
+       
+    
+    
+    
+    public Produit(int id,String libelle ,int quantite, String description, String image_p, float prix,Sous_categorie sous) {
         this.quantite = quantite;
         this.libelle = libelle;
         this.description = description;
         this.image_p = image_p;
         this.prix = prix;
-        this.sous = a;
+        this.sous = sous;
+        this.id=id;
+    }
+    
+    
+    
+    
+    
+    public Produit(String libelle ,int quantite, String description, String image_p, float prix,Sous_categorie sous) {
+        this.quantite = quantite;
+        this.libelle = libelle;
+        this.description = description;
+        this.image_p = image_p;
+        this.prix = prix;
+        this.sous = sous;
     }
     
     public int getId() {
