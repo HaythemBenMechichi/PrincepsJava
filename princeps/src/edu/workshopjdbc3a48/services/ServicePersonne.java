@@ -7,7 +7,7 @@ package edu.workshopjdbc3a48.services;
 
 import edu.workshopjdbc3a48.entities.Categorie;
 import edu.workshopjdbc3a48.entities.Produit;
-import edu.workshopjdbc3a48.entities.Sous_categorie;
+import edu.workshopjdbc3a48.entities.SousCategorie;
 import edu.workshopjdbc3a48.utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -86,7 +86,7 @@ public class ServicePersonne implements IService<Produit> {
     @Override
     public void modifier(Produit p) {
         try {
-            String req = "UPDATE produit SET `libelle` = '" + p.getLibelle() + "', `prix` = '" + p.getPrix() +  "', `description` = '" + p.getDescription()   +  "', `quantite` = '" + p.getQuantite()  +   "', `quantite` = '" + p.getQuantite()+"', `id_sous_cat_id` = '" + p.getA().getId()+ "' WHERE `produit`.`id` = " + p.getId();
+            String req = "UPDATE produit SET `libelle` = '" + p.getLibelle() + "', `prix` = '" + p.getPrix() +  "', `description` = '" + p.getDescription()   +  "', `quantite` = '" + p.getQuantite()  +   "', `quantite` = '" + p.getQuantite()+"', `image_p` = '" + p.getImage_p()+"', `id_sous_cat_id` = '" + p.getA().getId()+ "' WHERE `produit`.`id` = " + p.getId();
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("Personne updated !");
@@ -119,9 +119,9 @@ public class ServicePersonne implements IService<Produit> {
     
     
     
-    public Sous_categorie getSousCat(int id)
+    public SousCategorie getSousCat(int id)
     {
-        Sous_categorie cp = new Sous_categorie();
+        SousCategorie cp = new SousCategorie();
          try {
             String req = "Select * from sous_categorie where sous_categorie.id=" + id;
             Statement st = cnx.createStatement();
@@ -129,7 +129,7 @@ public class ServicePersonne implements IService<Produit> {
             while(rs.next()){
                 Categorie cat= new Categorie();
                 cat=getCat(rs.getInt("id_cat_id"));
-                Sous_categorie c = new Sous_categorie(rs.getInt("id"), rs.getInt("stat_sc"), rs.getString("nom_sous"),cat);
+                SousCategorie c = new SousCategorie(rs.getInt("id"), rs.getInt("stat_sc"), rs.getString("nom_sous"),cat);
             //    System.out.println("p="+c);
                 return c;
              }
@@ -147,9 +147,9 @@ public class ServicePersonne implements IService<Produit> {
 
 
     
-    public Sous_categorie getSousCatId(String nom_sous)
+    public SousCategorie getSousCatId(String nom_sous)
     {
-        Sous_categorie cp = new Sous_categorie();
+        SousCategorie cp = new SousCategorie();
          try {
             String req = "Select * from sous_categorie where sous_categorie.nom_sous=" + nom_sous;
             Statement st = cnx.createStatement();
@@ -157,7 +157,7 @@ public class ServicePersonne implements IService<Produit> {
             while(rs.next()){
                 Categorie cat= new Categorie();
                 cat=getCat(rs.getInt("id_cat_id"));
-                Sous_categorie c = new Sous_categorie(rs.getInt("id"), rs.getInt("stat_sc"), rs.getString("nom_sous"),cat);
+                SousCategorie c = new SousCategorie(rs.getInt("id"), rs.getInt("stat_sc"), rs.getString("nom_sous"),cat);
             //    System.out.println("p="+c);
                 return c;
              }
@@ -179,7 +179,7 @@ public class ServicePersonne implements IService<Produit> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
-                Sous_categorie s = new Sous_categorie();
+                SousCategorie s = new SousCategorie();
                 s = getSousCat(rs.getInt("id_sous_cat_id"));
                // System.out.println("s = "+s);
                 Produit p = new Produit( rs.getString("libelle"), rs.getInt("quantite"),rs.getString("description"),rs.getString("image_p"),rs.getFloat("prix"),s);

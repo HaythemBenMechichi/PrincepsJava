@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -7,46 +8,86 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="611.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.AfficheProduitController">
+<AnchorPane id="AnchorPane" fx:id="AncAll" prefHeight="806.0" prefWidth="1051.0" styleClass="grad" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.AfficheProduitController">
    <children>
-      <TableView fx:id="tableProd" layoutX="255.0" layoutY="115.0" onMouseClicked="#rowClicked" prefHeight="218.0" prefWidth="485.0">
-        <columns>
-          <TableColumn fx:id="colLibelle" prefWidth="75.0" text="Libelle" />
-          <TableColumn fx:id="colQuantite" prefWidth="75.0" text="Quanitite" />
-            <TableColumn fx:id="colPrix" prefWidth="75.0" text="Prix" />
-            <TableColumn fx:id="colSous" prefWidth="75.0" text="Sou-Categorie" />
-            <TableColumn fx:id="colDescription" prefWidth="183.0" text="Description" />
-            <TableColumn fx:id="colId" prefWidth="75.0" text="id" visible="false" />
-        </columns>
-      </TableView>
-      <Label layoutX="288.0" layoutY="34.0" text="Liste Des Produit">
-         <font>
-            <Font size="35.0" />
-         </font>
-      </Label>
-      <Button fx:id="suppButton" layoutX="524.0" layoutY="518.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="104.0" text="Supprimer" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae1f" height="634.0" layoutX="-103.0" layoutY="-17.0" stroke="BLACK" strokeType="INSIDE" width="252.0" />
-      <Button fx:id="btn_Retour" layoutX="33.0" layoutY="552.0" mnemonicParsing="false" onAction="#RetourMenu" prefHeight="31.0" prefWidth="77.0" text="Retour">
-         <font>
-            <Font name="Century Gothic" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="642.0" layoutY="518.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="95.0" text="Update" />
-      <Text layoutX="238.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle" />
-      <TextField fx:id="tfQuantite" layoutX="231.0" layoutY="423.0" />
-      <TextField fx:id="tfLibelle" layoutX="231.0" layoutY="363.0" />
-      <Text layoutX="240.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="quantite" />
-      <TextField fx:id="tfPrix" layoutX="231.0" layoutY="480.0" />
-      <TextArea fx:id="tfDescription" layoutX="524.0" layoutY="376.0" prefHeight="119.0" prefWidth="200.0" />
-      <Text layoutX="581.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-      <Text layoutX="244.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SousCategorie" />
-      <ChoiceBox fx:id="chbCat" layoutX="231.0" layoutY="543.0" prefWidth="150.0" />
-      <Label layoutX="241.0" layoutY="456.0" text="prix" />
-      <TextField fx:id="tfId" layoutX="426.0" layoutY="383.0" prefHeight="25.0" prefWidth="34.0" visible="false" />
+      <AnchorPane fx:id="ancProduit" layoutX="186.0" prefHeight="806.0" prefWidth="718.0" styleClass="grad" stylesheets="@style.css">
+         <children>
+            <TableView fx:id="tableProd" layoutX="293.0" layoutY="129.0" onMouseClicked="#rowClicked" prefHeight="336.0" prefWidth="573.0" stylesheets="@style.css">
+              <columns>
+                <TableColumn fx:id="colLibelle" prefWidth="75.0" text="Libelle" />
+                <TableColumn fx:id="colQuantite" prefWidth="75.0" text="Quanitite" />
+                  <TableColumn fx:id="colPrix" prefWidth="75.0" text="Prix" />
+                  <TableColumn fx:id="colDescription" prefWidth="183.0" text="Description" />
+                  <TableColumn fx:id="colId" prefWidth="75.0" text="id" visible="false" />
+              </columns>
+            </TableView>
+            <Label layoutX="133.0" layoutY="25.0" text="Liste Des Produit">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <Button fx:id="suppButton" layoutX="698.0" layoutY="734.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="104.0" text="Supprimer" />
+            <Button fx:id="btn_Retour" layoutX="82.0" layoutY="744.0" mnemonicParsing="false" onAction="#RetourMenu" prefHeight="31.0" prefWidth="77.0" text="Retour">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="544.0" layoutY="734.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="95.0" text="Update" />
+            <Text layoutX="99.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle" />
+            <TextField fx:id="tfQuantite" layoutX="93.0" layoutY="297.0" />
+            <TextField fx:id="tfLibelle" layoutX="93.0" layoutY="218.0" stylesheets="@style.css" />
+            <Text layoutX="98.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="quantite" />
+            <TextField fx:id="tfPrix" layoutX="93.0" layoutY="365.0" />
+            <TextArea fx:id="tfDescription" layoutX="93.0" layoutY="535.0" prefHeight="119.0" prefWidth="200.0" />
+            <Text layoutX="100.0" layoutY="511.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+            <Text layoutX="94.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SousCategorie" />
+            <ChoiceBox fx:id="chbCat" layoutX="93.0" layoutY="440.0" prefWidth="150.0" />
+            <Label layoutX="94.0" layoutY="333.0" text="prix" />
+            <TextField fx:id="tfId" prefHeight="25.0" prefWidth="34.0" visible="false" />
+            <Button layoutX="393.0" layoutY="592.0" mnemonicParsing="false" onAction="#upload" text="upload" />
+            <ImageView fx:id="uploadIv" fitHeight="193.0" fitWidth="240.0" layoutX="533.0" layoutY="495.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="351.0" layoutY="739.0" mnemonicParsing="false" onAction="#ajoutwindow" prefHeight="42.0" prefWidth="112.0" text="Ajouter" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancSideNav" prefHeight="806.0" prefWidth="200.0" style="-fx-background-color: #81999c;" styleClass="grad" stylesheets="@style.css">
+         <children>
+            <ImageView fitHeight="146.0" fitWidth="150.0" layoutX="37.0" layoutY="24.0">
+               <image>
+                  <Image url="@../../../../../../272263012_547330842902546_154201747613777162_n.png" />
+               </image>
+            </ImageView>
+            <Button layoutY="313.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="201.0" styleClass="trans-btn-white-border" text="User" />
+            <Button layoutX="-7.0" layoutY="209.0" mnemonicParsing="false" onAction="#changeProd" prefHeight="51.0" prefWidth="208.0" styleClass="trans-btn-white-border" stylesheets="@style.css" text="Produits">
+               <effect>
+                  <Blend />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutY="364.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="200.0" styleClass="trans-btn-white-border" text="Evenement" />
+            <Button layoutY="262.0" mnemonicParsing="false" onAction="#changeCat" prefHeight="51.0" prefWidth="200.0" styleClass="trans-btn-white-border" text="Categorie" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancCat" layoutX="203.0" prefHeight="806.0" prefWidth="855.0" styleClass="grad" stylesheets="@style.css" visible="false">
+         <children>
+            <Label text="Categorie">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <TextField layoutX="224.0" layoutY="391.0" />
+            <Label layoutX="172.0" layoutY="152.0" text="Libelle" />
+            <Button layoutX="104.0" layoutY="203.0" mnemonicParsing="false" text="upload" />
+            <Label layoutX="257.0" layoutY="244.0" text="image" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
