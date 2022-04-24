@@ -78,7 +78,7 @@ public class AfficheProduitController implements Initializable {
     @FXML
     private TextField tfPrix;
     @FXML
-    private TextArea tfDescription;
+    private TextField tfDescription;
     @FXML
     private ChoiceBox<SousCategorie> chbCat;
     

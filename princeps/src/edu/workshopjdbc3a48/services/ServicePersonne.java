@@ -167,10 +167,6 @@ public class ServicePersonne implements IService<Produit> {
         }
         return (cp);
     }
-
-
-    
-    
     @Override
     public List<Produit> getAll() {
         List<Produit> list = new ArrayList<>();
@@ -197,8 +193,5 @@ public class ServicePersonne implements IService<Produit> {
     @Override
     public void ajouter(Produit p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
- 
-
+    }   
 }

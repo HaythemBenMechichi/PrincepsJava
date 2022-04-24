@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
@@ -17,7 +16,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="AncAll" prefHeight="806.0" prefWidth="1051.0" styleClass="grad" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.AfficheProduitController">
    <children>
-      <AnchorPane fx:id="ancProduit" layoutX="186.0" prefHeight="806.0" prefWidth="718.0" styleClass="grad" stylesheets="@style.css">
+      <AnchorPane fx:id="ancProduit" layoutX="197.0" prefHeight="806.0" prefWidth="855.0" styleClass="grad" stylesheets="@style.css">
          <children>
             <TableView fx:id="tableProd" layoutX="293.0" layoutY="129.0" onMouseClicked="#rowClicked" prefHeight="336.0" prefWidth="573.0" stylesheets="@style.css">
               <columns>
@@ -33,47 +32,86 @@
                   <Font size="35.0" />
                </font>
             </Label>
-            <Button fx:id="suppButton" layoutX="698.0" layoutY="734.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="104.0" text="Supprimer" />
-            <Button fx:id="btn_Retour" layoutX="82.0" layoutY="744.0" mnemonicParsing="false" onAction="#RetourMenu" prefHeight="31.0" prefWidth="77.0" text="Retour">
+            <Button fx:id="suppButton" layoutX="698.0" layoutY="734.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="104.0" styleClass="b" text="Supprimer" />
+            <Button fx:id="btn_Retour" layoutX="82.0" layoutY="744.0" mnemonicParsing="false" onAction="#RetourMenu" prefHeight="31.0" prefWidth="77.0" styleClass="b" text="Retour">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="544.0" layoutY="734.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="95.0" text="Update" />
-            <Text layoutX="99.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle" />
-            <TextField fx:id="tfQuantite" layoutX="93.0" layoutY="297.0" />
+            <Button layoutX="544.0" layoutY="734.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="95.0" styleClass="b" text="Update" />
+            <Text layoutX="91.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle">
+               <font>
+                  <Font size="23.0" />
+               </font></Text>
+            <TextField fx:id="tfQuantite" layoutX="93.0" layoutY="297.0" styleClass="text-field" />
             <TextField fx:id="tfLibelle" layoutX="93.0" layoutY="218.0" stylesheets="@style.css" />
-            <Text layoutX="98.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="quantite" />
-            <TextField fx:id="tfPrix" layoutX="93.0" layoutY="365.0" />
-            <TextArea fx:id="tfDescription" layoutX="93.0" layoutY="535.0" prefHeight="119.0" prefWidth="200.0" />
-            <Text layoutX="100.0" layoutY="511.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-            <Text layoutX="94.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SousCategorie" />
+            <Text layoutX="91.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="quantite">
+               <font>
+                  <Font size="23.0" />
+               </font></Text>
+            <TextField fx:id="tfPrix" layoutX="93.0" layoutY="365.0" prefHeight="25.0" prefWidth="149.0" />
+            <Text layoutX="100.0" layoutY="511.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+               <font>
+                  <Font size="24.0" />
+               </font></Text>
+            <Text layoutX="94.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SousCategorie">
+               <font>
+                  <Font size="23.0" />
+               </font></Text>
             <ChoiceBox fx:id="chbCat" layoutX="93.0" layoutY="440.0" prefWidth="150.0" />
-            <Label layoutX="94.0" layoutY="333.0" text="prix" />
             <TextField fx:id="tfId" prefHeight="25.0" prefWidth="34.0" visible="false" />
-            <Button layoutX="393.0" layoutY="592.0" mnemonicParsing="false" onAction="#upload" text="upload" />
+            <Button layoutX="393.0" layoutY="592.0" mnemonicParsing="false" onAction="#upload" styleClass="b" text="upload" />
             <ImageView fx:id="uploadIv" fitHeight="193.0" fitWidth="240.0" layoutX="533.0" layoutY="495.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="351.0" layoutY="739.0" mnemonicParsing="false" onAction="#ajoutwindow" prefHeight="42.0" prefWidth="112.0" text="Ajouter" />
+            <Button layoutX="351.0" layoutY="739.0" mnemonicParsing="false" onAction="#ajoutwindow" prefHeight="42.0" prefWidth="112.0" styleClass="b" text="Ajouter" />
+            <Text layoutX="93.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <TextField fx:id="tfDescription" layoutX="97.0" layoutY="540.0" prefHeight="133.0" prefWidth="177.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="ancSideNav" prefHeight="806.0" prefWidth="200.0" style="-fx-background-color: #81999c;" styleClass="grad" stylesheets="@style.css">
+      <AnchorPane fx:id="ancSideNav" prefHeight="806.0" prefWidth="200.0" styleClass="grad-jnab" stylesheets="@style.css">
          <children>
             <ImageView fitHeight="146.0" fitWidth="150.0" layoutX="37.0" layoutY="24.0">
                <image>
-                  <Image url="@../../../../../../272263012_547330842902546_154201747613777162_n.png" />
+                  <Image url="@../272263012_547330842902546_154201747613777162_n.png" />
                </image>
             </ImageView>
-            <Button layoutY="313.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="201.0" styleClass="trans-btn-white-border" text="User" />
+            <Button layoutY="313.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="201.0" styleClass="trans-btn-white-border" text="User">
+               <font>
+                  <Font size="26.0" />
+               </font></Button>
             <Button layoutX="-7.0" layoutY="209.0" mnemonicParsing="false" onAction="#changeProd" prefHeight="51.0" prefWidth="208.0" styleClass="trans-btn-white-border" stylesheets="@style.css" text="Produits">
                <effect>
                   <Blend />
                </effect>
                <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Button>
+            <Button layoutY="364.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="200.0" styleClass="trans-btn-white-border" text="Evenement">
+               <font>
+                  <Font size="26.0" />
+               </font></Button>
+            <Button layoutY="262.0" mnemonicParsing="false" onAction="#changeCat" prefHeight="51.0" prefWidth="200.0" styleClass="trans-btn-white-border" text="Categorie">
+               <font>
+                  <Font size="26.0" />
+               </font>
+               <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <Blend />
+               </effect></Button>
+            <Button layoutX="-2.0" layoutY="719.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="200.0" styleClass="trans-btn-white-border" text="log out">
+               <font>
+                  <Font size="26.0" />
+               </font>
             </Button>
-            <Button layoutY="364.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="200.0" styleClass="trans-btn-white-border" text="Evenement" />
-            <Button layoutY="262.0" mnemonicParsing="false" onAction="#changeCat" prefHeight="51.0" prefWidth="200.0" styleClass="trans-btn-white-border" text="Categorie" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="ancCat" layoutX="203.0" prefHeight="806.0" prefWidth="855.0" styleClass="grad" stylesheets="@style.css" visible="false">
