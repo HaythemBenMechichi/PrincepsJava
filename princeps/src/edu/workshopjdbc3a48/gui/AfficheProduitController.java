@@ -17,12 +17,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.FileChannel;
 import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -39,7 +36,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -207,8 +203,16 @@ public class AfficheProduitController implements Initializable {
  else
         {
              Produit p = new Produit(Integer.valueOf(tfId.getText()),tfLibelle.getText(),Integer.valueOf(tfQuantite.getText()),tfDescription.getText(),fn,Float.valueOf(tfPrix.getText()),chbCat.getValue());
-            System.out.println("p = "+p.getA().getId());
+             System.out.println("p = "+p.getA().getId());
              sp.modifier(p);
+             
+             if(p.getQuantite()==0)
+             {
+                 
+                 System.out.println("out of stock");
+             }
+             
+             
             JOptionPane.showMessageDialog(null, "Produit modifié avec succés");
             refreshData();
             clear();

@@ -3,45 +3,36 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="623.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.AjouterProduitController">
+<AnchorPane id="AnchorPane" prefHeight="549.0" prefWidth="479.0" styleClass="ajout" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.AjouterProduitController">
    <children>
-      <Text layoutX="220.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle" />
-      <TextField fx:id="tfQuantite" layoutX="214.0" layoutY="257.0" />
-      <TextField fx:id="tfLibelle" layoutX="214.0" layoutY="197.0" />
-      <Text layoutX="222.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="quantite" />
-      <TextField fx:id="tfPrix" layoutX="214.0" layoutY="314.0" />
-      <TextArea fx:id="tfDescription" layoutX="472.0" layoutY="176.0" prefHeight="119.0" prefWidth="200.0" />
-      <Text layoutX="331.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-      <Text layoutX="226.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SousCategorie" />
-      <ChoiceBox fx:id="chbCat" layoutX="214.0" layoutY="377.0" prefWidth="150.0" />
-      <Button fx:id="btnAjouter" layoutX="388.0" layoutY="464.0" mnemonicParsing="false" onAction="#ajouterProduit" text="Ajouter">
+      <Text layoutX="53.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle" />
+      <TextField fx:id="tfQuantite" layoutX="44.0" layoutY="104.0" />
+      <TextField fx:id="tfLibelle" layoutX="44.0" layoutY="51.0" />
+      <Text layoutX="50.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="quantite" wrappingWidth="76.61718820035458" />
+      <TextField fx:id="tfPrix" layoutX="44.0" layoutY="164.0" />
+      <Text layoutX="48.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+      <Text layoutX="48.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SousCategorie" />
+      <ChoiceBox fx:id="chbCat" layoutX="44.0" layoutY="224.0" prefWidth="150.0" styleClass="text-field" />
+      <Button fx:id="btnAjouter" layoutX="249.0" layoutY="464.0" mnemonicParsing="false" onAction="#ajouterProduit" styleClass="b" text="Ajouter">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Label layoutX="223.0" layoutY="287.0" text="prix" />
-      <Label layoutX="477.0" layoutY="306.0" text="image" />
-      <ImageView fx:id="uploadIv" fitHeight="150.0" fitWidth="200.0" layoutX="477.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="572.0" layoutY="302.0" mnemonicParsing="false" onAction="#upload" text="Upload" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#88a7ac" height="634.0" layoutX="-59.0" layoutY="-11.0" stroke="BLACK" strokeType="INSIDE" width="213.0" />
-      <Button fx:id="btn_Retour" layoutX="38.0" layoutY="562.0" mnemonicParsing="false" onAction="#RetourMenu" prefHeight="31.0" prefWidth="77.0" text="Retour">
+      <Label layoutX="50.0" layoutY="138.0" text="prix" />
+      <Label layoutX="324.0" layoutY="74.0" text="image" />
+      <ImageView fx:id="uploadIv" fitHeight="150.0" fitWidth="200.0" layoutX="240.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="312.0" layoutY="299.0" mnemonicParsing="false" onAction="#upload" styleClass="b" text="Upload" />
+      <Button fx:id="btn_Retour" layoutX="56.0" layoutY="489.0" mnemonicParsing="false" onAction="#RetourMenu" prefHeight="31.0" prefWidth="77.0" styleClass="b" text="Retour">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Button>
-      <ImageView fitHeight="104.0" fitWidth="110.0" layoutX="717.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../272263012_547330842902546_154201747613777162_n.png" />
-         </image>
-      </ImageView>
+      <TextField fx:id="tfDescription" layoutX="45.0" layoutY="280.0" prefHeight="138.0" prefWidth="178.0" />
    </children>
 </AnchorPane>

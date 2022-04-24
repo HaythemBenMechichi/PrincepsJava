@@ -58,7 +58,7 @@
                <font>
                   <Font size="23.0" />
                </font></Text>
-            <ChoiceBox fx:id="chbCat" layoutX="93.0" layoutY="440.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="chbCat" layoutX="93.0" layoutY="440.0" prefWidth="150.0" styleClass="text-field" />
             <TextField fx:id="tfId" prefHeight="25.0" prefWidth="34.0" visible="false" />
             <Button layoutX="393.0" layoutY="592.0" mnemonicParsing="false" onAction="#upload" styleClass="b" text="upload" />
             <ImageView fx:id="uploadIv" fitHeight="193.0" fitWidth="240.0" layoutX="533.0" layoutY="495.0" pickOnBounds="true" preserveRatio="true" />

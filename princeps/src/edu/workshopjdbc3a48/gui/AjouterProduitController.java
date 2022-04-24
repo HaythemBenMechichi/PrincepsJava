@@ -57,7 +57,7 @@ public class AjouterProduitController implements Initializable {
     @FXML
     private ChoiceBox<SousCategorie> chbCat;
     @FXML
-    private TextArea tfDescription;
+    private TextField tfDescription;
     @FXML
     private Button btnAjouter;
     @FXML

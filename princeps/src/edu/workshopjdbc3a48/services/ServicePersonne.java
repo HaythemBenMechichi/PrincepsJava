@@ -102,9 +102,7 @@ public class ServicePersonne implements IService<Produit> {
             String req = "Select * from categorie where categorie.id=" + id;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
-         
-           while(rs.next()){
-                
+           while(rs.next()){   
                 Categorie c = new Categorie(rs.getInt("id"), rs.getInt("stat_c"), rs.getString("nom_c"),rs.getString("image_car"));
             //    System.out.println("p="+c);
                 return c;
