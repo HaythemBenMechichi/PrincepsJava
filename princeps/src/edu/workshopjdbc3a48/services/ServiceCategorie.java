@@ -54,7 +54,7 @@ public class ServiceCategorie implements IService<Categorie>{
     @Override
     public void modifier(Categorie p) {
         try {
-            String req = "UPDATE categorie SET `nom_c` = '" + p.getNom_c() + "', `stat_c` = '" + p.getStat_c() +  "', `image_car` = '" + p.getImage_car()   +  "' WHERE `produit`.`id` = " + p.getId();
+            String req = "UPDATE categorie SET `nom_c` = '" + p.getNom_c() + "', `stat_c` = '" + p.getStat_c() +  "', `image_car` = '" + p.getImage_car()   +  "' WHERE `categorie`.`id` = " + p.getId();
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("categorie updated !");
@@ -62,20 +62,13 @@ public class ServiceCategorie implements IService<Categorie>{
             System.out.println(ex.getMessage());
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     @Override
     public List<Categorie> getAll() {
         List<Categorie> list = new ArrayList<>();
         try {
-            String req = "Select * from produit";
+            String req = "Select * from categorie";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){

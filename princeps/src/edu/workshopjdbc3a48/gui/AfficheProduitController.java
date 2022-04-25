@@ -5,6 +5,7 @@
  */
 package edu.workshopjdbc3a48.gui;
 
+import edu.workshopjdbc3a48.entities.Categorie;
 import edu.workshopjdbc3a48.entities.Produit;
 import edu.workshopjdbc3a48.entities.SousCategorie;
 import edu.workshopjdbc3a48.services.ServiceCategorie;
@@ -97,6 +98,36 @@ public class AfficheProduitController implements Initializable {
     private AnchorPane ancSideNav;
     @FXML
     private AnchorPane ancCat;
+    @FXML
+    private TextField tfNomCat;
+    @FXML
+    private ImageView imageCat;
+    @FXML
+    private TableView<Categorie> tablecat;
+    @FXML
+    private TableView<?> tableSousCat;
+    @FXML
+    private TextField tfSousCat;
+    @FXML
+    private Button btnUploadSous;
+    @FXML
+    private ImageView imageSousCat;
+    @FXML
+    private Button ajoutSousCat;
+    @FXML
+    private Button suppSousCat;
+    @FXML
+    private Button UpdateSousCat;
+    @FXML
+    private TableColumn<Categorie, Integer > colStatCat;
+    @FXML
+    private TableColumn<Categorie,String> colNomCat;
+    @FXML
+    private Button btnUploadCat;
+    @FXML
+    private Button btnUpdateCat;
+    @FXML
+    private TextField tfidCat;
 
 
 
@@ -121,8 +152,17 @@ public class AfficheProduitController implements Initializable {
                     }
         affiche();
         tableProd.refresh();
-        // TODO
+        afficheCat();
+        tablecat.refresh();
+
+
+
+
+       
     }
+    
+    
+    
         public ObservableList<Produit> getAllP() {
             
                 Connection cnx = DataSource.getInstance().getCnx();
@@ -146,6 +186,8 @@ public class AfficheProduitController implements Initializable {
     }
     
     
+        
+        
     public void affiche() {      
         colLibelle.setCellValueFactory(new PropertyValueFactory<>("libelle"));
         colQuantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
@@ -159,7 +201,8 @@ public class AfficheProduitController implements Initializable {
       tableProd.setItems(obl);
       System.out.println(""+obl);        
     }
-
+    
+    
     @FXML
     private void supprimer(ActionEvent event) {
         
@@ -179,6 +222,9 @@ public class AfficheProduitController implements Initializable {
         
     }
 
+    
+    
+    
     @FXML
     private void rowClicked(MouseEvent event) {
         Produit e = tableProd.getSelectionModel().getSelectedItem();
@@ -192,6 +238,10 @@ public class AfficheProduitController implements Initializable {
         chbCat.setValue(e.getA());
     }
 
+    
+    
+    
+    
     @FXML
     private void modifier(ActionEvent event) {
     ServicePersonne sp = new ServicePersonne();
@@ -218,11 +268,26 @@ public class AfficheProduitController implements Initializable {
             clear();
         }
     }
+    
+    
+    
+    
+    
+    
     private void refreshData() {
             ObservableList listProd = FXCollections.observableArrayList();
-        listProd = getAllP();
+            ObservableList listCat = FXCollections.observableArrayList();
+
+            listProd = getAllP();
+        listCat = getAllC();
         tableProd.setItems(listProd);
+        tablecat.setItems(listCat);
+
     }
+    
+    
+    
+    
     private void clear() {
         tfLibelle.clear();
         tfQuantite.clear();
@@ -296,6 +361,154 @@ public class AfficheProduitController implements Initializable {
           ancCat.setVisible(false);
         
     }
+
+    
+    
+    
+    
+    
+    
+    
+    //                                            CATEGORIE                                    //
+    
+    
+    
+    
+    
+    
+    
+    
+    @FXML
+    private void rawClickedCat(MouseEvent event) {
+          Categorie e = tablecat.getSelectionModel().getSelectedItem();
+       fn = e.getImage_car();
+       imageCat.setImage(new Image("file:" + uploads + e.getImage_car()));
+        tfidCat.setText(""+(e.getId()));
+        tfNomCat.setText(e.getNom_c());
+    }
+
+    @FXML
+    private void suppCat(ActionEvent event) {
+       System.out.println("teeeeessttt");
+        ServiceCategorie Offres = new ServiceCategorie();
+        Categorie p = new Categorie();
+        p = tablecat.getSelectionModel().getSelectedItem();
+        System.out.println("p"+p);
+        System.out.println("id = " + p.getId());
+       Offres.supprimer(p.getId());
+        affiche();
+        tablecat.refresh();
+    }
+
+    @FXML
+    private void ajoutCat(ActionEvent event) throws IOException {
+        Parent rootEv = FXMLLoader.load(getClass().getResource("AjouterCategorie.fxml"));//eli heya category
+        Scene gestionViewScene = new Scene(rootEv);
+        //les informations du stage
+        Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        window.setScene(gestionViewScene);
+        window.setMaximized(false);
+        window.show();
+    }
+    
+    
+    
+    
+    
+    public void afficheCat() {      
+        colNomCat.setCellValueFactory(new PropertyValueFactory<>("nom_c"));
+        colStatCat.setCellValueFactory(new PropertyValueFactory<>("stat_c"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+      ObservableList<Categorie> obl =FXCollections.observableArrayList();
+      obl=getAllC(); 
+       System.out.println("ob1 = "+ obl);
+
+      tablecat.setItems(obl);
+      System.out.println(""+obl);        
+    }
+
+    
+    
+    
+    
+        
+           public ObservableList<Categorie> getAllC() {
+            
+                Connection cnx = DataSource.getInstance().getCnx();
+
+            ServiceCategorie sp = new ServiceCategorie(); 
+        ObservableList<Categorie> list = FXCollections.observableArrayList();
+        try {
+            String req = "Select * from categorie";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                SousCategorie s = new SousCategorie();
+                Categorie p = new Categorie( rs.getInt("id"),rs.getInt("stat_c"),rs.getString("nom_c"),rs.getString("image_car"));
+                list.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
+
+    @FXML
+    private void UploadCat(ActionEvent event) throws IOException {
+        
+       JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        path= f.getAbsolutePath();
+        imgname = f.getName();
+        fn = imgname;
+        Image getAbsolutePath = null;
+
+        String dd = uploads + f.getName();
+        File dest = new File(dd);
+        this.copyFile(f, dest);
+
+        System.out.println(dd);
+
+        imageCat.setImage(new Image("file:" + dest.getAbsolutePath()));
+        
+    }
+
+    @FXML
+    private void updateCat(ActionEvent event) {
+    
+    
+     ServiceCategorie sp = new ServiceCategorie();
+
+  if (tfNomCat.getText().isEmpty() )
+  {    
+      JOptionPane.showMessageDialog(null, "Veuillez vérifier les champs !");
+        } 
+ else
+        {
+             Categorie p = new Categorie(Integer.valueOf(tfidCat.getText()),tfNomCat.getText(),fn);
+             sp.modifier(p);
+             
+//             if(p.getQuantite()==0)
+//             {
+//                 
+//                 System.out.println("out of stock");
+//             }
+//             
+             
+            JOptionPane.showMessageDialog(null, "categorie modifié avec succés");
+            refreshData();
+            clear();
+        }
+  
+    
+    }
+    
+    
+    
+    
+    
+    
     
     
 }

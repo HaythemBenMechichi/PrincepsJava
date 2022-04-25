@@ -19,6 +19,20 @@ public class Categorie {
     public Categorie()
     {}
     
+   
+    
+      public Categorie( String nom_c, String image_car) {
+        this.nom_c = nom_c;
+        this.image_car = image_car;
+    }
+    
+    
+    
+     public Categorie(int id, String nom_c, String image_car) {
+        this.id = id;
+        this.nom_c = nom_c;
+        this.image_car = image_car;
+    }
     
     public Categorie(int id, int stat_c, String nom_c, String image_car) {
         this.id = id;

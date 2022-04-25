@@ -62,8 +62,6 @@ public class AjouterProduitController implements Initializable {
     private Button btnAjouter;
     @FXML
     private ImageView uploadIv;
-    
-    
     String uploads = "C:\\Users\\haythem\\Desktop\\PrincepsJava\\princeps\\src\\edu\\workshopjdbc3a48\\img";
     private String path = "", imgname = "", fn="";
     @FXML
@@ -73,6 +71,8 @@ public class AjouterProduitController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
            ServicePersonne sp = new ServicePersonne();
@@ -81,8 +81,7 @@ public class AjouterProduitController implements Initializable {
                    list= cp.geAllSousCat();
                     for (int i = 0; i < list.size(); i++) {
                     chbCat.getItems().add(list.get(i));
-                    }
-        // TODO 
+       }
     }    
     
     @FXML
