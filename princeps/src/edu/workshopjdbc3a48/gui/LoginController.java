@@ -108,7 +108,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private void SignUp(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/SignIn.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SignIn.fxml"));
+        System.out.println("nextpage");
         try {
             Parent root = loader.load();
             Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
