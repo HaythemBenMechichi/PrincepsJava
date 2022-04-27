@@ -38,7 +38,23 @@ public class ServicePersonne implements IService<Produit> {
             System.out.println(ex.getMessage());
         }
     }
-//    
+
+
+
+   public void ajouter(SousCategorie p) {
+        try {
+            String req = "INSERT INTO sous_categorie (nom_sous,stat_sc,id_cat_id) VALUES ('   " + p.getNom_sous() + "', '" +p.getStat_sc() +"', '" +p.getCat().getId()+ "')";
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+            System.out.println("sous categorie created !");
+            }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+
+    
 //    public void ajouter2(produit p) {
 //        try {
 //            String req = "INSERT INTO `prosuit` (`nom`, `prenom`) VALUES (?,?)";

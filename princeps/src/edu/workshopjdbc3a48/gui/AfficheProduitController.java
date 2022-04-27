@@ -105,13 +105,9 @@ public class AfficheProduitController implements Initializable {
     @FXML
     private TableView<Categorie> tablecat;
     @FXML
-    private TableView<?> tableSousCat;
+    private TableView<SousCategorie> tableSousCat;
     @FXML
     private TextField tfSousCat;
-    @FXML
-    private Button btnUploadSous;
-    @FXML
-    private ImageView imageSousCat;
     @FXML
     private Button ajoutSousCat;
     @FXML
@@ -128,6 +124,14 @@ public class AfficheProduitController implements Initializable {
     private Button btnUpdateCat;
     @FXML
     private TextField tfidCat;
+    @FXML
+    private TableColumn<SousCategorie, String> colNomSous;
+    @FXML
+    private TableColumn<SousCategorie, Integer> colStatSous;
+    @FXML
+    private TableColumn<SousCategorie, Integer> colIdSous;
+    @FXML
+    private TextField tfIdSous;
 
 
 
@@ -282,7 +286,6 @@ public class AfficheProduitController implements Initializable {
         listCat = getAllC();
         tableProd.setItems(listProd);
         tablecat.setItems(listCat);
-
     }
     
     
@@ -385,6 +388,18 @@ public class AfficheProduitController implements Initializable {
        imageCat.setImage(new Image("file:" + uploads + e.getImage_car()));
         tfidCat.setText(""+(e.getId()));
         tfNomCat.setText(e.getNom_c());
+        
+        
+        colNomSous.setCellValueFactory(new PropertyValueFactory<>("nom_sous"));
+        colStatSous.setCellValueFactory(new PropertyValueFactory<>("stat_sc"));
+        colIdSous.setCellValueFactory(new PropertyValueFactory<>("id"));
+      ObservableList<SousCategorie> obl =FXCollections.observableArrayList();
+      obl= getAllSousCat(e); 
+       System.out.println("ob1 = "+ obl);
+
+      tableSousCat.setItems(obl);
+      System.out.println(""+obl);    
+        
     }
 
     @FXML
@@ -490,12 +505,10 @@ public class AfficheProduitController implements Initializable {
              sp.modifier(p);
              
 //             if(p.getQuantite()==0)
-//             {
-//                 
+//             {   
 //                 System.out.println("out of stock");
 //             }
 //             
-             
             JOptionPane.showMessageDialog(null, "categorie modifié avec succés");
             refreshData();
             clear();
@@ -508,6 +521,68 @@ public class AfficheProduitController implements Initializable {
     
     
     
+    //                                      SOUS 
+    
+    
+           public ObservableList<SousCategorie> getAllSousCat(Categorie cat) {
+            
+                Connection cnx = DataSource.getInstance().getCnx();
+
+            ServiceCategorie sp = new ServiceCategorie(); 
+        ObservableList<SousCategorie> list = FXCollections.observableArrayList();
+        try {
+            String req = "Select * from sous_categorie where sous_categorie.id_cat_id=" + cat.getId();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                SousCategorie p = new SousCategorie( rs.getInt("id"),rs.getInt("stat_sc"),rs.getString("nom_sous"),cat);
+                list.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
+
+    @FXML
+    private void clickedSous(MouseEvent event) {
+        
+        
+           SousCategorie e = tableSousCat.getSelectionModel().getSelectedItem();
+        tfIdSous.setText(""+(e.getId()));
+    }
+
+    @FXML
+    private void suppSous(ActionEvent event) {  
+         System.out.println("teeeeessttt");
+        ServiceCategorie Offres = new ServiceCategorie();
+        SousCategorie p = new SousCategorie();
+        p = tableSousCat.getSelectionModel().getSelectedItem();
+        System.out.println("p"+p);
+        System.out.println("id = " + p.getId());
+       Offres.supprimerSous(p.getId());
+        tableSousCat.refresh();
+        affiche();
+        tablecat.refresh();
+
+        
+        
+    }
+
+    @FXML
+    private void ajoutSous(ActionEvent event) throws IOException {
+      Parent rootEv = FXMLLoader.load(getClass().getResource("AjoutSous.fxml"));//eli heya category
+        Scene gestionViewScene = new Scene(rootEv);
+        //les informations du stage
+        Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        window.setScene(gestionViewScene);
+        window.setMaximized(false);
+        window.show();
+        
+        
+    }
+    
+        
     
     
     

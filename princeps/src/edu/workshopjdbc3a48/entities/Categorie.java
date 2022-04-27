@@ -112,7 +112,7 @@ public class Categorie {
 
     @Override
     public String toString() {
-        return "categorie{" + "id=" + id + ", stat_c=" + stat_c + ", nom_c=" + nom_c + ", imager_car=" + image_car + '}';
+        return nom_c;
     }
     
     

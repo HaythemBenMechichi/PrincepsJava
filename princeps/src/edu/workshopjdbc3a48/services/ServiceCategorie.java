@@ -51,6 +51,18 @@ public class ServiceCategorie implements IService<Categorie>{
     }
     
    
+     public void supprimerSous(int id) {
+        try {
+            String req = "DELETE FROM `sous_categorie` WHERE id = " + id;
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+            System.out.println("Sous categorie deleted !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    
     @Override
     public void modifier(Categorie p) {
         try {
@@ -84,6 +96,8 @@ public class ServiceCategorie implements IService<Categorie>{
         return list;
     }
 
+    
+    
     
     
     
@@ -137,6 +151,10 @@ public class ServiceCategorie implements IService<Categorie>{
     
     
  
+    
+    
+    
+    
     @Override
     public void ajout(Produit P) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

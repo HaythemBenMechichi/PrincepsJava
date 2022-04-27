@@ -18,6 +18,22 @@ public class SousCategorie {
     public SousCategorie(){
     }
         
+   
+     public SousCategorie( String nom_sous,Categorie cat){
+        this.id = id;
+        this.stat_sc = stat_sc;
+        this.nom_sous = nom_sous;
+       this.cat=cat;
+    }
+
+    public SousCategorie(int stat_sc, String nom_sous,Categorie cat){
+        this.id = id;
+        this.stat_sc = stat_sc;
+        this.nom_sous = nom_sous;
+       this.cat=cat;
+    }
+     
+     
     public SousCategorie(int id, int stat_sc, String nom_sous,Categorie cat){
         this.id = id;
         this.stat_sc = stat_sc;
@@ -35,6 +51,14 @@ public class SousCategorie {
 
     public String getNom_sous() {
         return nom_sous;
+    }
+
+    public void setCat(Categorie cat) {
+        this.cat = cat;
+    }
+
+    public Categorie getCat() {
+        return cat;
     }
 
     public void setId(int id) {

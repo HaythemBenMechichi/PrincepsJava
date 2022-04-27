@@ -114,7 +114,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="ancCat" layoutX="203.0" prefHeight="806.0" prefWidth="855.0" styleClass="grad" stylesheets="@style.css">
+      <AnchorPane fx:id="ancCat" layoutX="197.0" prefHeight="806.0" prefWidth="855.0" styleClass="grad" stylesheets="@style.css">
          <children>
             <Label text="Categorie">
                <font>
@@ -142,30 +142,22 @@
             <Button layoutX="345.0" layoutY="271.0" mnemonicParsing="false" onAction="#ajoutCat" prefHeight="42.0" prefWidth="104.0" styleClass="b" text="ajout" />
             <Button layoutX="356.0" layoutY="133.0" mnemonicParsing="false" onAction="#suppCat" prefHeight="42.0" prefWidth="84.0" styleClass="b" text="supprimer" />
             <Button fx:id="btnUpdateCat" layoutX="355.0" layoutY="197.0" mnemonicParsing="false" onAction="#updateCat" prefHeight="42.0" prefWidth="84.0" styleClass="b" text="Update" />
-            <TableView fx:id="tableSousCat" layoutX="509.0" layoutY="460.0" prefHeight="200.0" prefWidth="219.0">
+            <TableView fx:id="tableSousCat" layoutX="325.0" layoutY="469.0" onMouseClicked="#clickedSous" prefHeight="244.0" prefWidth="343.0">
               <columns>
-                <TableColumn prefWidth="88.0" text="nom sous" />
-                <TableColumn prefWidth="62.0" text="stat sous" />
-                  <TableColumn prefWidth="75.0" text="id" visible="false" />
+                <TableColumn fx:id="colNomSous" prefWidth="88.0" text="nom sous" />
+                <TableColumn fx:id="colStatSous" prefWidth="62.0" text="stat sous" />
+                  <TableColumn fx:id="colIdSous" prefWidth="75.0" text="id" visible="false" />
               </columns>
             </TableView>
-            <TextField fx:id="tfSousCat" layoutX="76.0" layoutY="491.0" />
-            <Label layoutX="46.0" layoutY="418.0" prefHeight="56.0" prefWidth="325.0" text="nom de le sous categorie">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
-            <Label layoutX="98.0" layoutY="529.0" prefHeight="63.0" prefWidth="95.0" text="image">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnUploadSous" layoutX="91.0" layoutY="592.0" mnemonicParsing="false" styleClass="b" text="upload" />
-            <ImageView fx:id="imageSousCat" fitHeight="126.0" fitWidth="201.0" layoutX="76.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="ajoutSousCat" layoutX="388.0" layoutY="608.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="104.0" styleClass="b" text="ajout" />
-            <Button fx:id="suppSousCat" layoutX="399.0" layoutY="470.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="84.0" styleClass="b" text="supprimer" />
-            <Button fx:id="UpdateSousCat" layoutX="398.0" layoutY="534.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="84.0" styleClass="b" text="Update" />
+            <Button fx:id="ajoutSousCat" layoutX="170.0" layoutY="597.0" mnemonicParsing="false" onAction="#ajoutSous" prefHeight="51.0" prefWidth="127.0" styleClass="b" text="ajout" />
+            <Button fx:id="suppSousCat" layoutX="181.0" layoutY="514.0" mnemonicParsing="false" onAction="#suppSous" prefHeight="56.0" prefWidth="104.0" styleClass="b" text="supprimer" />
             <TextField fx:id="tfidCat" layoutX="345.0" layoutY="39.0" prefHeight="25.0" prefWidth="53.0" visible="false" />
+            <TextField fx:id="tfIdSous" layoutX="14.0" layoutY="725.0" prefHeight="25.0" prefWidth="34.0" visible="false" />
+            <Label layoutX="304.0" layoutY="378.0" text="Sous -Categorie">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
