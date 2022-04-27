@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.FrontProduitController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" stylesheets="@frontproduit.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.FrontProduitController">
    <children>
       <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -90,14 +90,13 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                         </ImageView>
-                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                        <HBox alignment="CENTER" prefHeight="139.0" prefWidth="335.0">
                            <children>
-                              <Label prefHeight="53.0" prefWidth="167.0" text="Kg" textFill="WHITE">
+                              <Label fx:id="DESC" prefHeight="76.0" prefWidth="246.0" text="DESC" textFill="WHITE">
                                  <font>
-                                    <Font name="Cambria" size="24.0" />
+                                    <Font name="Arial" size="16.0" />
                                  </font>
                               </Label>
-                              <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="1" styleClass="comboBox" stylesheets="@../../../../../../Fruits-Market-master/FruitMarket/src/values/style.css" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -109,17 +108,12 @@
                            </VBox.margin>
                            <children>
                               <Separator prefHeight="0.0" prefWidth="118.0" />
-                              <Label alignment="CENTER" prefHeight="45.0" prefWidth="64.0" text="or" textFill="WHITE">
-                                 <font>
-                                    <Font name="Cambria" size="24.0" />
-                                 </font>
-                              </Label>
                               <Separator prefHeight="0.0" prefWidth="118.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
                            <children>
-                              <Label prefHeight="53.0" prefWidth="167.0" text="Kg" textFill="WHITE">
+                              <Label prefHeight="53.0" prefWidth="167.0" text="Quantite" textFill="WHITE">
                                  <font>
                                     <Font name="Cambria" size="24.0" />
                                  </font>

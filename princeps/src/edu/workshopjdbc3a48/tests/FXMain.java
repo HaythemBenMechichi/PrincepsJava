@@ -21,13 +21,12 @@ import javafx.stage.Stage;
  * @author haythem
  */
 public class FXMain extends Application {
-    
+        public static final String CURRENCY = "$";
+
     @Override
     public void start(Stage primaryStage) throws IOException {
        
-        
-        
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AfficheProduit.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/FrontProduit.fxml"));
     Parent root = loader.load();
     Scene scene = new Scene(root);
     primaryStage.setScene(scene);
