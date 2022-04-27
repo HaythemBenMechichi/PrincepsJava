@@ -4,8 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pi.gui.LoginController">
@@ -16,10 +14,5 @@
       <Button layoutX="53.0" layoutY="321.0" mnemonicParsing="false" onAction="#SignUp" text="Sign Up" />
       <TextField fx:id="tfEmail" layoutX="330.0" layoutY="172.0" />
       <PasswordField fx:id="tfPassword" layoutX="330.0" layoutY="223.0" />
-      <ImageView fitHeight="129.0" fitWidth="126.0" layoutX="25.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/logo.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

@@ -67,7 +67,7 @@ public class UserServices implements iUserServices{
 
    
       public void modifierUser (User u){
-         String requete="UPDATE `user` SET `age`='"+u.getAge()+"',`email`='"+u.getEmail()+"',`nom`='"+u.getName()+"',`prenom`='"+u.getPrenom()+"',`number`='"+u.getNumber()+"' where `user`.`id`= "+u.getId();
+         String requete="UPDATE `user` SET `age`='"+u.getAge()+"',`email`='"+u.getEmail()+"',`nom`='"+u.getName()+"',`prenom`='"+u.getPrenom()+"',`number`='"+u.getNumber()+"',`role`='"+ u.getRole() +"' where `user`.`id`= "+u.getId();
         
 
          

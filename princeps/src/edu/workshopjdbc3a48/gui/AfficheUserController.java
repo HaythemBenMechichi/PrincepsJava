@@ -174,7 +174,7 @@ public class AfficheUserController implements Initializable {
         }
         Tusers.refresh();
       
-            clear();
+            clearUser();
     }
 
     @FXML
@@ -204,8 +204,8 @@ public class AfficheUserController implements Initializable {
             System.out.println("p = "+u.getId());
              US.modifierUser(u);
             JOptionPane.showMessageDialog(null, "User modifié avec succés");
-            refreshData();
-            clear();
+            refreshDataUser();
+            clearUser();
         }
     }
 
@@ -250,12 +250,12 @@ public class AfficheUserController implements Initializable {
        // tfDateFin.setValue(e.getDateFin().toLocalDate());
 
     }
-    private void refreshData() throws SQLException {
+    private void refreshDataUser() throws SQLException {
             ObservableList listUser = FXCollections.observableArrayList();
         listUser = getAllUser();
         Tusers.setItems(listUser);
     }
-    private void clear() {
+    private void clearUser() {
         Tfnom.clear();
         Tfid.clear();
         Tfprenom.clear();

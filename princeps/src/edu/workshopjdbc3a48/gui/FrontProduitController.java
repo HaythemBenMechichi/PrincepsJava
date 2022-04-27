@@ -58,27 +58,9 @@ public class FrontProduitController implements Initializable {
        Produit = sp.getAll();
         
        
-         if (Produit.size() > 0) {
-            setChosenFruit(Produit.get(0));
-            myListener = new MyListener() {
-                @Override
-                public void onClickListener(Fruit fruit) {
-                    setChosenFruit(fruit);
-                }
-            };
-        }
+       //
        
     }
-
-
-
-  private void setChosenFruit(Produit Produit) {
-        fruitNameLable.setText(fruit.getName());
-        fruitPriceLabel.setText(Main.CURRENCY + fruit.getPrice());
-        image = new Image(getClass().getResourceAsStream(fruit.getImgSrc()));
-        fruitImg.setImage(image);
-        chosenFruitCard.setStyle("-fx-background-color: #" + fruit.getColor() + ";\n" +
-                "    -fx-background-radius: 30;");
-    }    
-    
 }
+
+//

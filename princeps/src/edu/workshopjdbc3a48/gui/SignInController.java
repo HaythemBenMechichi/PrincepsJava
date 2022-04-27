@@ -82,7 +82,7 @@ public class SignInController implements Initializable {
                  UserServices p = new UserServices();
                  p.ajouterUser(u);
                 
-                   FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Login.fxml"));
                    
         try {
             Parent root = loader.load();
