@@ -173,7 +173,7 @@
                   <TableColumn fx:id="ColId" prefWidth="75.0" text="Column X" visible="false" />
                </columns>
             </TableView>
-            <Button layoutX="704.0" layoutY="347.0" mnemonicParsing="false" onAction="#Delete" styleClass="b" text="Suprimer" />
+            <Button layoutX="700.0" layoutY="360.0" mnemonicParsing="false" onAction="#Delete" styleClass="b" text="Suprimer" />
             <Button layoutX="378.0" layoutY="583.0" mnemonicParsing="false" onAction="#Update" styleClass="b" text="Modifier" />
             <Label fx:id="TFNOM" layoutX="61.0" layoutY="312.0" text="Nom" />
             <Label layoutX="61.0" layoutY="359.0" text="Prenom" />
@@ -188,6 +188,7 @@
             <Label layoutX="68.0" layoutY="537.0" text="Number" />
             <TextField fx:id="Tfid" layoutX="467.0" layoutY="484.0" prefHeight="25.0" prefWidth="27.0" visible="false" />
             <ChoiceBox fx:id="chRole" layoutX="128.0" layoutY="442.0" prefWidth="150.0" styleClass="text-field" />
+            <Button layoutX="607.0" layoutY="360.0" mnemonicParsing="false" onAction="#banUser" styleClass="b" stylesheets="@style.css" text="ban" />
          </children>
       </AnchorPane>
    </children>
