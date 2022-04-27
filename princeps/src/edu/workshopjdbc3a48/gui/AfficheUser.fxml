@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane id="AnchorPane" prefHeight="638.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pi.gui.AfficheUserController">
+   <children>
+      <TableView fx:id="Tusers" layoutX="316.0" layoutY="43.0" onMouseClicked="#rowClicked" prefHeight="229.0" prefWidth="453.0">
+        <columns>
+          <TableColumn fx:id="ColNom" minWidth="0.0" prefWidth="70.0" text="Nom" />
+          <TableColumn fx:id="Colprenom" text="Prenom" />
+            <TableColumn fx:id="ColAge" prefWidth="75.0" text="Age" />
+            <TableColumn fx:id="Colemail" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="Colrole" prefWidth="75.0" text="Role" />
+            <TableColumn fx:id="ColNumber" prefWidth="75.0" text="number" />
+            <TableColumn fx:id="ColId" prefWidth="75.0" text="Column X" visible="false" />
+        </columns>
+      </TableView>
+      <Button layoutX="680.0" layoutY="283.0" mnemonicParsing="false" onAction="#Delete" text="Suprimer" />
+      <Button layoutX="378.0" layoutY="583.0" mnemonicParsing="false" onAction="#Update" text="Modifier" />
+      <Label fx:id="TFNOM" layoutX="162.0" layoutY="312.0" text="Nom" />
+      <Label layoutX="162.0" layoutY="359.0" text="Prenom" />
+      <Label layoutX="162.0" layoutY="395.0" text="Age" />
+      <Label layoutX="162.0" layoutY="437.0" text="Role" />
+      <Label layoutX="162.0" layoutY="482.0" text="Email" />
+      <TextField fx:id="Tfnom" layoutX="229.0" layoutY="308.0" />
+      <TextField fx:id="Tfprenom" layoutX="229.0" layoutY="355.0" />
+      <TextField fx:id="Tfage" layoutX="229.0" layoutY="400.0" />
+      <TextField fx:id="Tfemail" layoutX="229.0" layoutY="487.0" />
+      <TextField fx:id="Tfnumber" layoutX="229.0" layoutY="533.0" />
+      <Label layoutX="169.0" layoutY="537.0" text="Number" />
+      <TextField fx:id="Tfid" layoutX="467.0" layoutY="484.0" prefHeight="25.0" prefWidth="27.0" visible="false" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#88a7ac" height="648.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="141.0" />
+      <Button layoutX="45.0" layoutY="586.0" mnemonicParsing="false" onAction="#logOut" text="logout" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="151.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/logo.png" />
+         </image>
+      </ImageView>
+      <ChoiceBox fx:id="chRole" layoutX="229.0" layoutY="442.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
