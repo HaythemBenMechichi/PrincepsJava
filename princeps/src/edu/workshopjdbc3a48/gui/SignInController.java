@@ -23,8 +23,7 @@ import javafx.stage.Stage;
 import edu.workshopjdbc3a48.entities.Client;
 import edu.workshopjdbc3a48.entities.User;
 import edu.workshopjdbc3a48.services.UserServices;
-import src.org.mindrot.jbcrytpt;
-
+import org.mindrot.jbcrypt.BCrypt;
 /**
  * FXML Controller class
  *

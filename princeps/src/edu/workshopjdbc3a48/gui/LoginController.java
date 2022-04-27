@@ -25,7 +25,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
-import tn.esprit.pi.utils.MyConnexion;
+import edu.workshopjdbc3a48.utils.DataSource;
 
 
 /**
@@ -50,8 +50,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private void login(ActionEvent event) throws SQLException {
-         MyConnexion dbConnect = new MyConnexion();
-        Connection connection  = dbConnect.getConnection();
+        Connection cnx = DataSource.getInstance().getCnx();
+       
 
         String email = tfEmail.getText();
         String pw = tfPassword.getText();
@@ -59,7 +59,7 @@ public class LoginController implements Initializable {
 
         
             String qry = "SELECT * FROM user WHERE email=\""+email+"\";";
-            Statement stm = connection.createStatement();
+            Statement stm = cnx.createStatement();
 
             ResultSet rs = stm.executeQuery(qry);
 
