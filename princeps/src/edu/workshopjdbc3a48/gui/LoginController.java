@@ -80,7 +80,8 @@ public class LoginController implements Initializable {
         t.setHeaderText(null);
         t.setContentText("Welcome");
             t.showAndWait();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficheUser.fxml"));
+            if(rs.getString("role").equalsIgnoreCase("['ROLE_ADMIN']"))
+            { FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficheProduit.fxml"));
         try {
             Parent root = loader.load();
             Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -91,6 +92,9 @@ public class LoginController implements Initializable {
             System.out.println("error:"+ex.getMessage());
         }
             }
+                
+            }
+           
              else
                 {
                     Alert t = new Alert(Alert.AlertType.WARNING) ;

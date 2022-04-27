@@ -10,9 +10,9 @@
    <children>
       <Label layoutX="263.0" layoutY="176.0" text="Email" />
       <Label layoutX="241.0" layoutY="227.0" text="Password" />
-      <Button layoutX="456.0" layoutY="321.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="71.0" text="Login" />
-      <Button layoutX="53.0" layoutY="321.0" mnemonicParsing="false" onAction="#SignUp" text="Sign Up" />
-      <TextField fx:id="tfEmail" layoutX="330.0" layoutY="172.0" />
-      <PasswordField fx:id="tfPassword" layoutX="330.0" layoutY="223.0" />
+      <Button layoutX="456.0" layoutY="321.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="71.0" styleClass="b" stylesheets="@style.css" text="Login" />
+      <Button layoutX="53.0" layoutY="321.0" mnemonicParsing="false" onAction="#SignUp" styleClass="b" stylesheets="@style.css" text="Sign Up" />
+      <TextField fx:id="tfEmail" layoutX="330.0" layoutY="172.0" stylesheets="@style.css" />
+      <PasswordField fx:id="tfPassword" layoutX="330.0" layoutY="223.0" stylesheets="@style.css" />
    </children>
 </AnchorPane>

@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pi.gui.SignInController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.SignInController">
    <children>
       <Label layoutX="129.0" layoutY="55.0" text="nom" />
       <Label layoutX="131.0" layoutY="89.0" text="prenom" />
@@ -15,14 +15,14 @@
       <Label layoutX="129.0" layoutY="254.0" text="password" />
       <Label layoutX="98.0" layoutY="302.0" text="repeat password" />
       <Label layoutX="133.0" layoutY="208.0" text="number" />
-      <TextField fx:id="tfNom" layoutX="197.0" layoutY="51.0" />
-      <TextField fx:id="tfPrenom" layoutX="196.0" layoutY="87.0" />
-      <TextField fx:id="tfAge" layoutX="197.0" layoutY="124.0" />
-      <TextField fx:id="tfEmail" layoutX="197.0" layoutY="161.0" />
-      <TextField fx:id="tfNumber" layoutX="197.0" layoutY="204.0" />
-      <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnlogin" text="login" />
-      <PasswordField fx:id="tfPassword" layoutX="197.0" layoutY="250.0" />
-      <PasswordField fx:id="tfConfirmpassword" layoutX="197.0" layoutY="298.0" />
-      <Button fx:id="btnValider" layoutX="354.0" layoutY="352.0" mnemonicParsing="false" onAction="#save" text="valider" />
+      <TextField fx:id="tfNom" layoutX="197.0" layoutY="51.0" styleClass="text-field" stylesheets="@style.css" />
+      <TextField fx:id="tfPrenom" layoutX="196.0" layoutY="87.0" stylesheets="@style.css" />
+      <TextField fx:id="tfAge" layoutX="197.0" layoutY="124.0" stylesheets="@style.css" />
+      <TextField fx:id="tfEmail" layoutX="197.0" layoutY="161.0" stylesheets="@style.css" />
+      <TextField fx:id="tfNumber" layoutX="197.0" layoutY="204.0" stylesheets="@style.css" />
+      <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnlogin" styleClass="b" stylesheets="@style.css" text="login" />
+      <PasswordField fx:id="tfPassword" layoutX="197.0" layoutY="250.0" stylesheets="@style.css" />
+      <PasswordField fx:id="tfConfirmpassword" layoutX="197.0" layoutY="298.0" stylesheets="@style.css" />
+      <Button fx:id="btnValider" layoutX="354.0" layoutY="352.0" mnemonicParsing="false" onAction="#save" styleClass="b" stylesheets="@style.css" text="valider" />
    </children>
 </AnchorPane>
