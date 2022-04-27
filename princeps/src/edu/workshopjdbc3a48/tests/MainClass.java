@@ -31,7 +31,7 @@ public class MainClass {
    //  sp.modifier(p2);
   //     cp.supprimer(13);
         
-//sp.getAll();
+sp.getAll();
 
 
   }    

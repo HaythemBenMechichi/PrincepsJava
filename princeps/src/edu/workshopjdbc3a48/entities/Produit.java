@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * @author abdelazizmezri
  */
-public class Produit {
+ public class Produit {
     private int id,quantite;
     private String libelle, description,image_p;
     private float prix;

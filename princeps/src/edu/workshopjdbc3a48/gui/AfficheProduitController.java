@@ -577,13 +577,6 @@ public class AfficheProduitController implements Initializable {
         Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
         window.setScene(gestionViewScene);
         window.setMaximized(false);
-        window.show();
-        
-        
-    }
-    
-        
-    
-    
-    
+        window.show();   
+    }  
 }
