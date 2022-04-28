@@ -5,14 +5,23 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.LoginController">
    <children>
-      <Label layoutX="263.0" layoutY="176.0" text="Email" />
-      <Label layoutX="241.0" layoutY="227.0" text="Password" />
-      <Button layoutX="456.0" layoutY="321.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="71.0" styleClass="b" stylesheets="@style.css" text="Login" />
+      <Label fx:id="labelEmail" layoutX="252.0" layoutY="118.0" text="Email" />
+      <Label fx:id="LabelPass" layoutX="242.0" layoutY="176.0" text="Password" />
+      <Button fx:id="btnlogin" layoutX="456.0" layoutY="321.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="71.0" styleClass="b" stylesheets="@style.css" text="Login" />
       <Button layoutX="53.0" layoutY="321.0" mnemonicParsing="false" onAction="#SignUp" styleClass="b" stylesheets="@style.css" text="Sign Up" />
-      <TextField fx:id="tfEmail" layoutX="330.0" layoutY="172.0" stylesheets="@style.css" />
-      <PasswordField fx:id="tfPassword" layoutX="330.0" layoutY="223.0" stylesheets="@style.css" />
+      <TextField fx:id="tfEmail" layoutX="330.0" layoutY="114.0" stylesheets="@style.css" />
+      <PasswordField fx:id="tfPassword" layoutX="330.0" layoutY="172.0" stylesheets="@style.css" />
+      <Label fx:id="LabelCode" layoutX="253.0" layoutY="224.0" text="Code" visible="false" />
+      <Button fx:id="btnConfirm" layoutX="466.0" layoutY="321.0" mnemonicParsing="false" onAction="#Valider" styleClass="b" stylesheets="@style.css" text="Confirmer" visible="false" />
+      <TextField fx:id="TfCode" layoutX="330.0" layoutY="220.0" stylesheets="@style.css" visible="false" />
+      <Label fx:id="labelConf" layoutX="156.0" layoutY="52.0" prefHeight="35.0" prefWidth="251.0" text="Confirmer Votre Code" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

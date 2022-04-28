@@ -13,6 +13,7 @@ public abstract class User {
     private String number;
     private String role;
     private String Password;
+    private String code;
     //constructor
 
     public User() {
@@ -70,6 +71,7 @@ public abstract class User {
         this.number = number;
         this.role = role;
         this.Password = password;
+        
     }
 
     public String getPassword() {

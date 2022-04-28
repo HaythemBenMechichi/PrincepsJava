@@ -5,6 +5,8 @@
  */
 package edu.workshopjdbc3a48.gui;
 
+import Controller.Activator;
+import Controller.MaillerController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +24,8 @@ import javafx.stage.Stage;
 import edu.workshopjdbc3a48.entities.Client;
 import edu.workshopjdbc3a48.entities.User;
 import edu.workshopjdbc3a48.services.UserServices;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import org.mindrot.jbcrypt.BCrypt;
 /**
  * FXML Controller class
@@ -56,7 +60,7 @@ public class SignInController implements Initializable {
     }    
 
     @FXML
-    private void save(ActionEvent event) {
+    private void save(ActionEvent event) throws MessagingException, AddressException, IOException {
         String Nom=tfNom.getText();
          String Prenom=tfPrenom.getText();
           int Age=0;
@@ -78,9 +82,12 @@ public class SignInController implements Initializable {
             { 
                 Age=Integer.parseInt(tfAge.getText());
                 String hashed = BCrypt.hashpw(Password,  BCrypt.gensalt());
+                
                 User u= new Client( Age,Nom, Prenom,  Email,Number,"Client", hashed);
                  UserServices p = new UserServices();
                  p.ajouterUser(u);
+                 
+        
                 
                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Login.fxml"));
                    
@@ -101,7 +108,6 @@ public class SignInController implements Initializable {
            
             
     }
-
     @FXML
     private void btnlogin(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));

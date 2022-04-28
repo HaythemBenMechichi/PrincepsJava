@@ -679,14 +679,14 @@ public class AfficheProduitController implements Initializable {
              User u ;
              if(chRole.getValue().equals("Admin"))
              {
-               u = new  Admin(Integer.valueOf(Tfid.getText()),Integer.valueOf(Tfage.getText()),Tfnom.getText(),Tfprenom.getText(),Tfnumber.getText(),Tfemail.getText(),"[\\'ROLE_ADMIN\\']");
+               u = new  Admin(Integer.valueOf(Tfid.getText()),Integer.valueOf(Tfage.getText()),Tfnom.getText(),Tfprenom.getText(),Tfemail.getText(),Tfnumber.getText(),"[\\'ROLE_ADMIN\\']");
              }
              else if(chRole.getValue().equals("Client"))
              {
-                 u = new  Client(Integer.valueOf(Tfid.getText()),Integer.valueOf(Tfage.getText()),Tfnom.getText(),Tfprenom.getText(),Tfnumber.getText(),Tfemail.getText(),"[\\'ROLE_CLIENT\\']");
+                 u = new  Client(Integer.valueOf(Tfid.getText()),Integer.valueOf(Tfage.getText()),Tfnom.getText(),Tfprenom.getText(),Tfemail.getText(),Tfnumber.getText(),"[\\'ROLE_CLIENT\\']");
              }
              else{
-                 u = new  Livreur(Integer.valueOf(Tfid.getText()),Integer.valueOf(Tfage.getText()),Tfnom.getText(),Tfprenom.getText(),Tfnumber.getText(),Tfemail.getText(),"[\\'ROLE_LIVREUR\\']");
+                 u = new  Livreur(Integer.valueOf(Tfid.getText()),Integer.valueOf(Tfage.getText()),Tfnom.getText(),Tfprenom.getText(),Tfemail.getText(),Tfnumber.getText(),"[\\'ROLE_LIVREUR\\']");
              }
                 System.out.println("u= "+ u.getId());
            
@@ -795,5 +795,9 @@ public class AfficheProduitController implements Initializable {
        
         Tfnumber.setText(u.getNumber());
        // tfDateFin.setValue(e.getDateFin().toLocalDate());
+    }
+
+    @FXML
+    private void banUser(ActionEvent event) {
     }
 }
