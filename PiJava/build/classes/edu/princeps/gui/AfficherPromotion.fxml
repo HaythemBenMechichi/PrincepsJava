@@ -10,11 +10,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="731.0" prefWidth="1089.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.princeps.gui.AfficherPromotionController">
+<AnchorPane id="AnchorPane" prefHeight="731.0" prefWidth="1089.0" style="-fx-background-color: #096479;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.princeps.gui.AfficherPromotionController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae1f" height="739.0" stroke="BLACK" strokeType="INSIDE" width="141.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="272.0" layoutX="164.0" layoutY="94.0" stroke="BLACK" strokeType="INSIDE" width="896.0" />
-      <TableView fx:id="TablePromotion" layoutX="165.0" layoutY="385.0" onMouseClicked="#rowClicked" prefHeight="332.0" prefWidth="896.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#88a7ac" height="739.0" stroke="BLACK" strokeType="INSIDE" width="141.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b9b9b9" height="272.0" layoutX="150.0" layoutY="94.0" stroke="#b9b9b9" strokeType="INSIDE" width="896.0" />
+      <TableView fx:id="TablePromotion" layoutX="165.0" layoutY="385.0" onMouseClicked="#rowClicked" prefHeight="332.0" prefWidth="896.0" style="-fx-background-color: #b9b9b9;">
         <columns>
           <TableColumn fx:id="colRefProd" prefWidth="194.0" text="Ref produit" />
             <TableColumn fx:id="colProd" prefWidth="183.0" text="Produit" />
@@ -22,60 +22,60 @@
             <TableColumn fx:id="colEvenement" prefWidth="239.0" text="Evénement" />
         </columns>
       </TableView>
-      <Label layoutX="196.0" layoutY="133.0" text="Nom Produit">
+      <Label layoutX="196.0" layoutY="133.0" text="Nom Produit" textFill="#d31515">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Label>
-      <Label layoutX="196.0" layoutY="222.0" text="Reférence produit">
+      <Label layoutX="196.0" layoutY="222.0" text="Reférence produit" textFill="#d31515">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Label>
-      <Label layoutX="682.0" layoutY="222.0" text="Evénement">
+      <Label layoutX="682.0" layoutY="222.0" text="Evénement" textFill="#d31515">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Label>
-      <Label layoutX="686.0" layoutY="133.0" text="Taux">
+      <Label layoutX="686.0" layoutY="133.0" text="Taux" textFill="#d31515">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Label>
-      <TextField fx:id="tfNom" layoutX="310.0" layoutY="126.0" prefHeight="31.0" prefWidth="187.0">
+      <TextField fx:id="tfNom" layoutX="310.0" layoutY="126.0" prefHeight="31.0" prefWidth="187.0" promptText="nom du produit">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></TextField>
-      <TextField fx:id="tfTaux" layoutX="792.0" layoutY="126.0" prefHeight="31.0" prefWidth="187.0">
+      <TextField fx:id="tfTaux" layoutX="792.0" layoutY="126.0" prefHeight="31.0" prefWidth="187.0" promptText="remise">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></TextField>
-      <ComboBox fx:id="tfEvenement" layoutX="792.0" layoutY="215.0" prefHeight="31.0" prefWidth="187.0" />
-      <Button fx:id="btnAjouter" layoutX="420.0" layoutY="299.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="31.0" prefWidth="77.0" text="Ajouter">
+      <ComboBox fx:id="tfEvenement" layoutX="792.0" layoutY="215.0" prefHeight="31.0" prefWidth="187.0" promptText="nom d'évenement" />
+      <Button fx:id="btnAjouter" layoutX="435.0" layoutY="299.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="31.0" prefWidth="77.0" text="Ajouter" textFill="#d31515">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Button>
-      <Label graphicTextGap="10.0" layoutX="175.0" layoutY="21.0" text="Promotion">
+      <Label graphicTextGap="10.0" layoutX="175.0" layoutY="21.0" text="Promotion" textFill="#e1e1e1">
          <font>
             <Font name="Century Gothic" size="29.0" />
          </font>
       </Label>
-      <Button fx:id="btn_Retour" layoutX="32.0" layoutY="680.0" mnemonicParsing="false" onAction="#RetourMenu" prefHeight="31.0" prefWidth="77.0" text="Retour">
+      <Button fx:id="btn_Retour" layoutX="32.0" layoutY="680.0" mnemonicParsing="false" onAction="#RetourMenu" prefHeight="31.0" prefWidth="77.0" text="Retour" textFill="#125d9a">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Button>
-      <TextField fx:id="tfRefProd" layoutX="310.0" layoutY="215.0" prefHeight="31.0" prefWidth="187.0">
+      <TextField fx:id="tfRefProd" layoutX="310.0" layoutY="215.0" prefHeight="31.0" prefWidth="187.0" promptText="reférence du produit">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </TextField>
-      <Button fx:id="btnModifier" disable="true" layoutX="526.0" layoutY="299.0" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="79.0" text="Modifier">
+      <Button fx:id="btnModifier" disable="true" layoutX="552.0" layoutY="299.0" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="79.0" text="Modifier" textFill="#d31515">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnSupprimer" disable="true" layoutX="639.0" layoutY="299.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="31.0" prefWidth="79.0" text="Supprimer">
+      <Button fx:id="btnSupprimer" disable="true" layoutX="660.0" layoutY="299.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="31.0" prefWidth="79.0" text="Supprimer" textFill="#d31515">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnAjouter1" layoutX="754.0" layoutY="299.0" mnemonicParsing="false" onAction="#reset" prefHeight="31.0" prefWidth="91.0" text="Réinitialiser">
+      <Button fx:id="btnAjouter1" layoutX="792.0" layoutY="299.0" mnemonicParsing="false" onAction="#reset" prefHeight="31.0" prefWidth="91.0" text="Réinitialiser" textFill="#d31515">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
@@ -85,5 +85,20 @@
             <Font name="Franklin Gothic Medium" size="20.0" />
          </font>
       </Label>
+      <Button layoutX="23.0" layoutY="268.0" mnemonicParsing="false" onAction="#Btn_pdf" prefHeight="31.0" prefWidth="77.0" text="Pdf" textFill="#d31515">
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="23.0" layoutY="339.0" mnemonicParsing="false" onAction="#imprimer" prefHeight="31.0" prefWidth="77.0" text="Imprimer" textFill="#d31515">
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAjouter2" layoutX="23.0" layoutY="191.0" mnemonicParsing="false" onAction="#exportExcel" prefHeight="31.0" prefWidth="77.0" text="Export" textFill="#125d9a">
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

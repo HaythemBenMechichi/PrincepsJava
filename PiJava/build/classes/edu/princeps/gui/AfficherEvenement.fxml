@@ -11,11 +11,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="731.0" prefWidth="1089.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.princeps.gui.AfficherEvenementController">
+<AnchorPane id="AnchorPane" prefHeight="731.0" prefWidth="1089.0" style="-fx-background-color: #096479;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.princeps.gui.AfficherEvenementController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae1f" height="739.0" stroke="BLACK" strokeType="INSIDE" width="141.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="272.0" layoutX="164.0" layoutY="94.0" stroke="BLACK" strokeType="INSIDE" width="896.0" />
-      <TableView fx:id="TableEvenement" layoutX="165.0" layoutY="385.0" onMouseClicked="#rowClicked" prefHeight="332.0" prefWidth="896.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#88a7ac" height="739.0" layoutX="1.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="123.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b9b9b9" height="288.0" layoutX="149.0" layoutY="71.0" stroke="BLACK" strokeType="INSIDE" width="911.0" />
+      <TableView fx:id="TableEvenement" layoutX="165.0" layoutY="410.0" onMouseClicked="#rowClicked" prefHeight="307.0" prefWidth="896.0" style="-fx-background-color: #b9b9b9;">
         <columns>
             <TableColumn fx:id="colNom" prefWidth="184.0" text="Nom" />
           <TableColumn fx:id="coldatedebut" minWidth="0.0" prefWidth="167.0" text="Date début" />
@@ -23,23 +23,23 @@
             <TableColumn fx:id="colimage" minWidth="0.0" prefWidth="206.0" text="Image" />
         </columns>
       </TableView>
-      <Label layoutX="638.0" layoutY="148.0" text="Nom Evenement">
+      <Label layoutX="638.0" layoutY="148.0" text="Nom Evenement" textFill="#b52707">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Label>
-      <Label layoutX="192.0" layoutY="148.0" prefHeight="17.0" prefWidth="69.0" text="Date Debut">
+      <Label layoutX="192.0" layoutY="148.0" prefHeight="17.0" prefWidth="69.0" text="Date Debut" textFill="#b52707">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Label>
-      <TextField fx:id="tfNom" layoutX="768.0" layoutY="141.0" prefHeight="31.0" prefWidth="187.0">
+      <TextField fx:id="tfNom" layoutX="768.0" layoutY="141.0" prefHeight="31.0" prefWidth="187.0" promptText="nom event">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></TextField>
-      <Button fx:id="btnModifier" disable="true" layoutX="531.0" layoutY="320.0" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="91.0" text="Modifier">
+      <Button fx:id="btnModifier" disable="true" layoutX="531.0" layoutY="320.0" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="91.0" text="Modifier" textFill="#b52707">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Button>
-      <Label graphicTextGap="10.0" layoutX="175.0" layoutY="21.0" text="Evénement">
+      <Label graphicTextGap="10.0" layoutX="175.0" layoutY="21.0" text="Evénement" textFill="#d0cfcf">
          <font>
             <Font name="Century Gothic" size="33.0" />
          </font>
@@ -48,32 +48,43 @@
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Button>
-      <Label layoutX="638.0" layoutY="246.0" text="Image">
+      <Label layoutX="638.0" layoutY="246.0" text="Image" textFill="#b52707">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Label>
       <ImageView fx:id="uploadIv" fitHeight="94.0" fitWidth="176.0" layoutX="851.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true" />
-      <DatePicker fx:id="tfDateFin" layoutX="288.0" layoutY="251.0" />
-      <Label layoutX="201.0" layoutY="255.0" prefHeight="17.0" prefWidth="52.0" text="Date Fin">
+      <DatePicker fx:id="tfDateFin" layoutX="288.0" layoutY="251.0" promptText="fin event" />
+      <Label layoutX="201.0" layoutY="255.0" prefHeight="17.0" prefWidth="52.0" text="Date Fin" textFill="#b52707">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Label>
-      <DatePicker fx:id="tfDateDeb" layoutX="288.0" layoutY="144.0" />
-      <Button fx:id="btnAjouter" layoutX="409.0" layoutY="320.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="31.0" prefWidth="85.0" text="Ajouter">
+      <DatePicker fx:id="tfDateDeb" layoutX="288.0" layoutY="144.0" promptText="debut event" />
+      <Button fx:id="btnAjouter" layoutX="409.0" layoutY="320.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="31.0" prefWidth="85.0" text="Ajouter" textFill="#b52707">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnSupprimer" disable="true" layoutX="652.0" layoutY="320.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="31.0" prefWidth="91.0" text="Supprimer">
+      <Button fx:id="btnSupprimer" disable="true" layoutX="652.0" layoutY="320.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="31.0" prefWidth="91.0" text="Supprimer" textFill="#b52707">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnReset" layoutX="777.0" layoutY="320.0" mnemonicParsing="false" onAction="#reset" prefHeight="31.0" prefWidth="91.0" text="Réinitialiser">
+      <Button fx:id="btnReset" layoutX="777.0" layoutY="320.0" mnemonicParsing="false" onAction="#reset" prefHeight="31.0" prefWidth="91.0" text="Réinitialiser" textFill="#b52707">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnUpload" layoutX="768.0" layoutY="241.0" mnemonicParsing="false" onAction="#upload" text="Upload" />
+      <Button fx:id="btnUpload" layoutX="768.0" layoutY="241.0" mnemonicParsing="false" onAction="#upload" text="Upload" textFill="#b52707" />
+      <TextField fx:id="ftsearch" layoutX="372.0" layoutY="377.0" onKeyPressed="#search" promptText="recherche" />
+      <Button fx:id="btn_Stat" layoutX="13.0" layoutY="157.0" mnemonicParsing="false" onAction="#openStat" prefHeight="31.0" prefWidth="98.0" text="Statistiques">
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="228.0" layoutY="381.0" prefHeight="17.0" prefWidth="149.0" text="Rechercher Evenement" textFill="#fff8f7">
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

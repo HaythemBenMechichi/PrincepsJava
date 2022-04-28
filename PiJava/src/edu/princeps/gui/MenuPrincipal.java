@@ -29,6 +29,8 @@ public class MenuPrincipal implements Initializable {
     private Button btn_Ajouter;
     @FXML
     private Button btn_Afficher;
+    @FXML
+    private Button btn_front;
 
     /**
      * Initializes the controller class.
@@ -57,6 +59,17 @@ public class MenuPrincipal implements Initializable {
         Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
         window.setMaximized(true);
         window.setScene(gestionViewScene);
+        window.show();
+    }
+
+    @FXML
+    private void RetourMenu(ActionEvent event) throws IOException{
+        Parent rootEv = FXMLLoader.load(getClass().getResource("frontEvents.fxml"));
+        Scene gestionViewScene = new Scene(rootEv);
+        //les informations du stage
+        Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        window.setScene(gestionViewScene);
+        window.setMaximized(true);
         window.show();
     }
 

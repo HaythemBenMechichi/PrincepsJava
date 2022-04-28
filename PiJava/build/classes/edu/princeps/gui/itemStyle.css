@@ -1,0 +1,8 @@
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+}
+
+.event-item{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}

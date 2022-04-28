@@ -79,4 +79,19 @@ public class ServicePromotion implements IService<EventProd> {
         return list;
     }
 
+    public int countPromotions(int id) {
+        int count = 0;
+        try {
+            String req = "select count(*) as total from event_prod where evenement_id = " + id;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                count = rs.getInt("total");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return count;
+    }
+
 }

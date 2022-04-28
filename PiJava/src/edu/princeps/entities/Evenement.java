@@ -5,7 +5,12 @@
  */
 package edu.princeps.entities;
 
+import com.itextpdf.text.Document;
+import edu.princeps.services.ServiceEvenement;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -85,5 +90,62 @@ public class Evenement {
     public String toString() {
         return this.nom;
     }
+    
+    
+    /*
+    public void pdf()
+    {
+        long millis = System.currentTimeMillis();
+        java.sql.Date DateRapport = new java.sql.Date(millis);
+
+        String DateAuj = new SimpleDateFormat("yyyyMMddHHmmss", Locale.ENGLISH).format(DateRapport);//yyyyMMddHHmmss
+      
+        ServiceEvenement se=new ServiceEvenement();
+        List<Evenement> lee=Evenement.getAll();
+        Document document = new Document();
+
+        try {
+
+            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\Nour Hammami\\Documents\\NetBeansProjects\\PIJavaFX\\src\\Apis\\"+String.valueOf(DateAuj + "produit.pdf")));//yyyy-MM-dd
+            document.open();
+            Paragraph ph1 = new Paragraph("Rapport pour les produits : " + DateRapport);
+            Paragraph ph2 = new Paragraph(".");
+            PdfPTable table = new PdfPTable(6);
+
+            //On créer l'objet cellule.
+            PdfPCell cell;
+
+            //contenu du tableau.
+            table.addCell("id");
+            table.addCell("nom produit");
+            table.addCell("description");
+            table.addCell("prix");
+            table.addCell("image");
+            table.addCell("id categorie");
+            
+            for (int i = 0; i < lee.size(); i++) {
+                table.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(String.valueOf(lee.get(i).getId()));
+                table.addCell(lee.get(i).getNomProduit());
+                table.addCell(lee.get(i).getDescriptionProduit());
+                table.addCell(String.valueOf(lee.get(i).getPrixProduit()));
+                table.addCell(lee.get(i).getPhoto());
+                table.addCell(String.valueOf(lee.get(i).getQuantiteProduit()));
+          
+            
+            }
+           
+            document.add(ph1);
+            document.add(ph2);
+            document.add(table);
+            //  document.addAuthor("Bike");
+            // AlertDialog.showNotification("Creation PDF ", "Votre fichier PDF a ete cree avec success", AlertDialog.image_checked);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        document.close();
+    }*/
+
+
 
 }
