@@ -171,6 +171,9 @@ public class AfficheProduitController implements Initializable {
     private ChoiceBox<String> chRole;
     @FXML
     private AnchorPane ancuser;
+    
+    @FXML
+    private ChoiceBox<String> chRoleRech;
 
 
 
@@ -630,6 +633,11 @@ public class AfficheProduitController implements Initializable {
         ancuser.setVisible(true);
         afficheUser();
         
+        chRoleRech.getItems().add("Livreur");
+        chRoleRech.getItems().add("Client");
+        chRoleRech.getItems().add("Admin");
+        
+        
         chRole.getItems().add("Livreur");
         chRole.getItems().add("Client");
         chRole.getItems().add("Admin");
@@ -820,7 +828,7 @@ public class AfficheProduitController implements Initializable {
             st.executeUpdate(req);
             System.out.println("user banned");
         } catch (SQLException ex) {
-            Logger.getLogger(AfficheProduitController.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
             
             
@@ -837,5 +845,53 @@ FXMLLoader loader = new FXMLLoader(getClass().getResource("PieChartRole.fxml"));
 newWindow.setScene(new Scene(loader.load()));
 //Launch
 newWindow.show();
+    }
+
+    @FXML
+    private void recherche(ActionEvent event) throws SQLException {
+         ObservableList<User>  list =  FXCollections.observableArrayList();
+          try {
+            Connection cnx = DataSource.getInstance().getCnx();
+            String text ;
+            if(chRoleRech.getValue().equals("Admin"))
+             {
+               text="[\\'ROLE_ADMIN\\']";
+             }
+             else if(chRoleRech.getValue().equals("Client"))
+             {
+                text="[\\'ROLE_CLIENT\\']";
+             }
+             else{
+                text="[\\'ROLE_LIVREUR\\']";
+             }
+            
+            ResultSet res = cnx.createStatement().executeQuery("SELECT * FROM user where role ='" + text + "'");
+            
+                 User u ;
+                 while (res.next()) {
+            if("['ROLE_ADMIN']".equals(res.getString("role")))
+            {
+                
+                u = new Admin(res.getInt("id"), res.getInt("age"),res.getString("nom"),res.getString("prenom"),res.getString("email"),res.getString("number"),"Admin");
+            }
+            else if("['ROLE_CLIENT']".equals(res.getString("role")))
+            {
+                u = new Client(res.getInt("id"),res.getInt("age"),res.getString("nom"),res.getString("prenom"),res.getString("email"),res.getString("number"),"Client");
+            }
+            else
+            {
+                u = new Livreur(res.getInt("id"), res.getInt("age"),res.getString("nom"),res.getString("prenom"),res.getString("email"),res.getString("number"),"Livreur");
+            }
+            list.add(u);
+                 
+        }
+          }catch (SQLException ex) {
+           System.out.println(ex);
+        }
+afficheUser();
+     
+ Tusers.setItems(list);
+  Tusers.refresh();
+
     }
 }

@@ -19,8 +19,8 @@ public class MaillerController {
     Session newSession =null;
     MimeMessage mimeMessage = null;
     public void sendEmail() throws MessagingException {
-    String fromUser = "monemehamila@gmail.com";  //Enter sender email id
-    String fromUserPassword = "191JMT1346";  //Enter sender gmail password , this will be authenticated by gmail smtp server
+    String fromUser = "princeps.ordre@gmail.com";  //Enter sender email id
+    String fromUserPassword = "esprit2022";  //Enter sender gmail password , this will be authenticated by gmail smtp server
     String emailHost = "smtp.gmail.com";
     Transport transport = newSession.getTransport("smtp");
     transport.connect(emailHost, fromUser, fromUserPassword);

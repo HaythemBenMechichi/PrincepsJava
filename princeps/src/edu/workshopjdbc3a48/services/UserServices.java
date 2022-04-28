@@ -18,6 +18,8 @@ import edu.workshopjdbc3a48.utils.DataSource;
 import edu.workshopjdbc3a48.entities.Admin;
 import edu.workshopjdbc3a48.entities.Client;
 import edu.workshopjdbc3a48.entities.Livreur;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -148,7 +150,12 @@ return users;
     }
 
    
+public void rechercher(String index){
+List<User> result = afficherUser().stream().filter(line -> index.equals(line.getId())).collect(Collectors.toList());
+                    System.out.println("----------");
+                    result.forEach(System.out::println);
 
+}
    
 
    
