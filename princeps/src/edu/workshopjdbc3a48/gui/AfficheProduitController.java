@@ -803,7 +803,26 @@ public class AfficheProduitController implements Initializable {
        User u ;
        u = Tusers.getSelectionModel().getSelectedItem();
              String req="UPDATE `user` SET  `ban` =1 where `user`.`id`="+u.getId();
-            Statement st = cnx.createStatement();
-            ResultSet res = st.executeQuery(req);
+           Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+            System.out.println("user banned");
+    }
+
+    @FXML
+    private void unban(ActionEvent event) throws SQLException {
+        Connection cnx = edu.workshopjdbc3a48.utils.DataSource.getInstance().getCnx();
+       User u ;
+       u = Tusers.getSelectionModel().getSelectedItem();
+             String req="UPDATE `user` SET  `ban` =0 where `user`.`id`="+u.getId();
+           Statement st;
+        try {
+            st = cnx.createStatement();
+            st.executeUpdate(req);
+            System.out.println("user banned");
+        } catch (SQLException ex) {
+            Logger.getLogger(AfficheProduitController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
     }
 }

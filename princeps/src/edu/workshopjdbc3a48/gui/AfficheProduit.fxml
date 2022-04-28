@@ -162,7 +162,7 @@
       </AnchorPane>
       <AnchorPane id="AnchorPane" fx:id="ancuser" layoutX="201.0" prefHeight="806.0" prefWidth="866.0">
          <children>
-            <TableView fx:id="Tusers" layoutX="370.0" layoutY="43.0" onMouseClicked="#rowClickedTUser" prefHeight="302.0" prefWidth="495.0">
+            <TableView fx:id="Tusers" layoutX="291.0" layoutY="53.0" onMouseClicked="#rowClickedTUser" prefHeight="302.0" prefWidth="495.0">
                <columns>
                   <TableColumn fx:id="ColNom" minWidth="0.0" prefWidth="70.0" text="Nom" />
                   <TableColumn fx:id="Colprenom" text="Prenom" />
@@ -188,7 +188,8 @@
             <Label layoutX="68.0" layoutY="537.0" text="Number" />
             <TextField fx:id="Tfid" layoutX="467.0" layoutY="484.0" prefHeight="25.0" prefWidth="27.0" visible="false" />
             <ChoiceBox fx:id="chRole" layoutX="128.0" layoutY="442.0" prefWidth="150.0" styleClass="text-field" />
-            <Button layoutX="607.0" layoutY="360.0" mnemonicParsing="false" onAction="#banUser" styleClass="b" stylesheets="@style.css" text="ban" />
+            <Button layoutX="607.0" layoutY="360.0" mnemonicParsing="false" onAction="#banUser" prefHeight="25.0" prefWidth="65.0" styleClass="b" stylesheets="@style.css" text="ban" />
+            <Button layoutX="512.0" layoutY="360.0" mnemonicParsing="false" onAction="#unban" prefHeight="25.0" prefWidth="65.0" styleClass="b" stylesheets="@style.css" text="Unban" />
          </children>
       </AnchorPane>
    </children>
