@@ -3,7 +3,6 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -27,14 +26,9 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="49.0" prefWidth="128.0" text="Fruits" textFill="#878787">
+                        <Label prefHeight="49.0" prefWidth="176.0" text="Princeps">
                            <font>
                               <Font name="Cambria Bold" size="40.0" />
-                           </font>
-                        </Label>
-                        <Label text="Market" textFill="#878787">
-                           <font>
-                              <Font name="Cambria" size="40.0" />
                            </font>
                         </Label>
                      </children>
@@ -44,7 +38,7 @@
                         <Insets left="30.0" right="30.0" />
                      </VBox.margin>
                      <children>
-                        <TextField prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../../../../../../Fruits-Market-master/FruitMarket/src/values/style.css">
+                        <TextField fx:id="tfRecherche" prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../../../../../../Fruits-Market-master/FruitMarket/src/values/style.css">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -52,7 +46,7 @@
                               <Font name="Cambria" size="18.0" />
                            </font>
                         </TextField>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../../../../../../Fruits-Market-master/FruitMarket/src/values/style.css" text="Search" textFill="WHITE" />
+                        <Button mnemonicParsing="false" onMouseClicked="#rechercheProd" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../../../../../../Fruits-Market-master/FruitMarket/src/values/style.css" text="Search" textFill="WHITE" />
                      </children>
                      <styleClass>
                         <String fx:value="search-box" />
@@ -118,7 +112,7 @@
                                     <Font name="Cambria" size="24.0" />
                                  </font>
                               </Label>
-                              <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="selected" styleClass="comboBox" stylesheets="@../../../../../../Fruits-Market-master/FruitMarket/src/values/style.css" />
+                              <TextField prefHeight="25.0" prefWidth="50.0" />
                            </children>
                         </HBox>
                         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../../../../../../Fruits-Market-master/FruitMarket/src/values/style.css" text="ADD TO CART" textFill="#828282">
@@ -170,33 +164,42 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="72.0" prefWidth="840.0">
                      <children>
                         <Pane prefHeight="84.0" prefWidth="96.0" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../../../../../../Fruits-Market-master/FruitMarket/src/values/style.css">
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
                                  <children>
-                                    <Label prefHeight="29.0" prefWidth="190.0" text="Free delivery" textFill="#878787">
+                                    <Label prefHeight="34.0" prefWidth="190.0" text="                   Tri" textFill="#878787">
                                        <font>
                                           <Font name="Cambria Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="16.0" prefWidth="190.0" text="over $20 order" textFill="#878787">
-                                       <font>
-                                          <Font name="Cambria" size="15.0" />
-                                       </font>
-                                    </Label>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label onMouseClicked="#DESC" prefHeight="20.0" prefWidth="104.0" text="DESC">
+                                             <font>
+                                                <Font name="Cambria" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label onMouseClicked="#ASC" prefHeight="20.0" prefWidth="79.0" text="     ASC">
+                                             <font>
+                                                <Font name="Cambria" size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
-                              <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="28.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../Fruits-Market-master/FruitMarket/src/img/ic_delivery.png" />
+                                    <Image url="@../../../../../../../Downloads/sort.png" />
                                  </image>
                               </ImageView>
                            </children>
                         </HBox>
-                        <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
+                        <Pane prefHeight="110.0" prefWidth="63.0" HBox.hgrow="ALWAYS" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../../../../../../Fruits-Market-master/FruitMarket/src/values/style.css">
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
@@ -228,7 +231,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="scroll" prefHeight="570.0" prefWidth="785.0" styleClass="transparent" stylesheets="@../../../../../../Fruits-Market-master/FruitMarket/src/values/style.css">
+                        <ScrollPane fx:id="scroll" prefHeight="619.0" prefWidth="785.0" styleClass="transparent" stylesheets="@../../../../../../Fruits-Market-master/FruitMarket/src/values/style.css">
                            <content>
                               <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
                                  <rowConstraints>

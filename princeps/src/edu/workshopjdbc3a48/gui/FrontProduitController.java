@@ -20,8 +20,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -61,8 +63,10 @@ public class FrontProduitController implements Initializable {
      String uploads = "C:\\Users\\haythem\\Desktop\\PrincepsJava\\princeps\\src\\edu\\workshopjdbc3a48\\img";
     @FXML
     private Label DESC;
+    @FXML
+    private TextField tfRecherche;
 
-                
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -81,11 +85,15 @@ public class FrontProduitController implements Initializable {
         }   
         
         
+        
+        
+        
         int column = 0;
         int row = 1;
         try {
             for (int i = 0; i < Produit.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
+
                 fxmlLoader.setLocation(getClass().getResource("item.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
@@ -118,5 +126,210 @@ public class FrontProduitController implements Initializable {
         fruitPriceLabel.setText("" + Produit.getPrix());
         DESC.setText(Produit.getDescription());
      fruitImg.setImage(new Image("file:" + uploads + Produit.getImage_p()));
+    }
+
+    @FXML
+    private void rechercheProd(MouseEvent event) throws IOException {
+      ServicePersonne sp = new ServicePersonne();
+
+        String rech = tfRecherche.getText();
+        grid.getChildren().clear();
+
+        Produit p = new Produit();
+       p = sp.rechercheProd(rech);
+        
+       if(p.getLibelle() == null)
+       {
+           
+                      grid.getChildren().clear();
+
+       Produit = sp.getAll();
+        
+        if (Produit.size() > 0) {
+            setChosenFruit(Produit.get(0));
+            
+            myListener = new MyListener() {
+            @Override
+                public void onClickListener(Produit Produit) {
+                    setChosenFruit(Produit);
+                }     
+            };
+        }   
+        
+        
+        
+        
+        
+        int column = 0;
+        int row = 1;
+        
+            for (int i = 0; i < Produit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+
+                fxmlLoader.setLocation(getClass().getResource("item.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(Produit.get(i),myListener);
+
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+            }
+        } else
+       {
+           
+           
+       
+       
+         int column = 0;
+        int row = 1;
+         FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("item.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(p,myListener);
+
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+       
+       }
+    }
+
+    @FXML
+    private void DESC(MouseEvent event) {
+        
+        
+         Produit = sp.getAllDESC();
+        
+        if (Produit.size() > 0) {
+            setChosenFruit(Produit.get(0));
+            
+            myListener = new MyListener() {
+            @Override
+                public void onClickListener(Produit Produit) {
+                    setChosenFruit(Produit);
+                }     
+            };
+        }
+        
+        
+        
+        int column = 0;
+        int row = 1;
+        try {
+            for (int i = 0; i < Produit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+
+                fxmlLoader.setLocation(getClass().getResource("item.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(Produit.get(i),myListener);
+
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+
+    @FXML
+    private void ASC(MouseEvent event) {
+        
+        
+         Produit = sp.getAllASC();
+        
+        if (Produit.size() > 0) {
+            setChosenFruit(Produit.get(0));
+            
+            myListener = new MyListener() {
+            @Override
+                public void onClickListener(Produit Produit) {
+                    setChosenFruit(Produit);
+                }     
+            };
+        }   
+        
+        
+        
+        
+        
+        int column = 0;
+        int row = 1;
+        try {
+            for (int i = 0; i < Produit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+
+                fxmlLoader.setLocation(getClass().getResource("item.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(Produit.get(i),myListener);
+
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
     }
 }

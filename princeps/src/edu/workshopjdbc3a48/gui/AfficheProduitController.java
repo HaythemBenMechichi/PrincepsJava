@@ -5,47 +5,100 @@
  */
 package edu.workshopjdbc3a48.gui;
 
+import com.pdfjet.A4;
+import com.pdfjet.Cell;
+import com.pdfjet.CoreFont;
+import com.pdfjet.Font;
+import com.pdfjet.PDF;
+import com.pdfjet.Page;
+import com.pdfjet.Table;
 import edu.workshopjdbc3a48.entities.Categorie;
 import edu.workshopjdbc3a48.entities.Produit;
 import edu.workshopjdbc3a48.entities.SousCategorie;
 import edu.workshopjdbc3a48.services.ServiceCategorie;
 import edu.workshopjdbc3a48.services.ServicePersonne;
 import edu.workshopjdbc3a48.utils.DataSource;
+
+import java.sql.Statement;
+
+
+import javafx.scene.control.ChoiceBox;
+
+import javafx.scene.layout.AnchorPane;
+
+import javax.swing.JOptionPane;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.channels.FileChannel;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
+import java.io.FileInputStream;
+import java.nio.channels.FileChannel;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * FXML Controller class
@@ -87,6 +140,8 @@ public class AfficheProduitController implements Initializable {
     
     
     String uploads = "C:\\Users\\haythem\\Desktop\\PrincepsJava\\princeps\\src\\edu\\workshopjdbc3a48\\img";
+    String upload = "C:\\Users\\haythem\\Desktop\\PrincepsJava\\princeps\\src\\edu\\workshopjdbc3a48\\";
+
     private String path = "", imgname = "", fn="";
     @FXML
     private ImageView uploadIv;
@@ -107,13 +162,9 @@ public class AfficheProduitController implements Initializable {
     @FXML
     private TableView<SousCategorie> tableSousCat;
     @FXML
-    private TextField tfSousCat;
-    @FXML
     private Button ajoutSousCat;
     @FXML
     private Button suppSousCat;
-    @FXML
-    private Button UpdateSousCat;
     @FXML
     private TableColumn<Categorie, Integer > colStatCat;
     @FXML
@@ -249,6 +300,7 @@ public class AfficheProduitController implements Initializable {
     @FXML
     private void modifier(ActionEvent event) {
     ServicePersonne sp = new ServicePersonne();
+          Image pho = new Image("file:" + upload + "noti.jpg" );
 
   if (tfLibelle.getText().isEmpty() || tfQuantite.getText().isEmpty() || tfPrix.getText().isEmpty() )
   {    
@@ -267,10 +319,20 @@ public class AfficheProduitController implements Initializable {
              }
              
              
-            JOptionPane.showMessageDialog(null, "Produit modifié avec succés");
             refreshData();
             clear();
         }
+  
+  
+   Notifications notificationBuilder = Notifications.create()
+                                                     .title("offre Ajouter")
+                                                      .text("offre ajouter avec succée")
+                                                     .graphic(new ImageView(pho))
+                                                     .hideAfter(javafx.util.Duration.seconds(5) )
+                                                      .position(Pos.TOP_RIGHT) ;
+         notificationBuilder.show();
+
+  
     }
     
     
@@ -579,4 +641,72 @@ public class AfficheProduitController implements Initializable {
         window.setMaximized(false);
         window.show();   
     }  
+    
+    
+  
+
+    @FXML
+    private void printpdf(MouseEvent event) throws Exception {
+        
+        
+         File out = new File("tableProduit.pdf") ;
+        FileOutputStream fos = new FileOutputStream(out) ;
+        PDF pdf = new PDF(fos) ;
+        Page page = new Page(pdf, A4.PORTRAIT)  ;
+        Font f1 = new Font(pdf, CoreFont.HELVETICA_BOLD) ;
+        Font f2 = new Font(pdf, CoreFont.HELVETICA) ;
+        Table table = new Table() ;
+        List<List<Cell>> tabledata = new ArrayList<List<Cell>>() ;      
+        List<Cell> tablerow = new ArrayList<Cell>() ;    
+        tablerow.add(        new Cell(f1,colLibelle.getText()) ) ;
+        tablerow.add(        new Cell(f1,colDescription.getText())) ;
+        tablerow.add(        new Cell(f1,colPrix.getText())) ;
+        tabledata.add(tablerow) ;
+   
+   
+     
+   
+   ServicePersonne ser= new ServicePersonne();
+       
+       
+        List<Produit> li =ser.getAllASC();
+  int i =0 ;
+for ( i=0 ; i<li.size();i++){
+        Cell prc = new Cell(f2,li.get(i).getLibelle()) ;
+        Cell gc = new Cell(f2,li.get(i).getDescription()) ;
+        Cell lc = new Cell(f2,String.valueOf(li.get(i).getPrix())) ;
+       
+        tablerow = new ArrayList<Cell>() ;
+              tablerow.add(prc) ; tablerow.add(gc) ; tablerow.add(lc)  ;
+       
+    tabledata.add(tablerow) ;
+    table.setData(tabledata);
+    table.setPosition(10f, 60f);
+    table.setColumnWidth(0, 90f);
+    table.setColumnWidth(1, 90f);
+    table.setColumnWidth(2, 90f);
+   }
+   
+   
+    while(true){
+    table.drawOn(page) ;
+    if(!table.hasMoreData()){
+    table.resetRenderedPagesCount();
+    break ;  
+   
+    }
+   
+    page=new Page(pdf,A4.PORTRAIT) ;
+   
+   
+    }
+   
+    pdf.flush();
+    fos.close();
+        System.out.println("saved to "+out.getAbsolutePath());
+       
+        
+    }
+
+    
 }
