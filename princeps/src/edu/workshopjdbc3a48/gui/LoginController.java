@@ -7,6 +7,7 @@ package edu.workshopjdbc3a48.gui;
 
 import Controller.Activator;
 import Controller.MaillerController;
+import Controller.UserSession;
 import edu.workshopjdbc3a48.entities.User;
 import java.io.IOException;
 import java.net.URL;
@@ -188,6 +189,19 @@ public class LoginController implements Initializable {
            
                 
             while(rs.next()){
+                
+             int   id = rs.getInt("id");
+              String  role = rs.getString("role");
+               String nom = rs.getString("nom");
+               String prenom = rs.getString("prenom");
+                int age = rs.getInt("age");
+                String password= rs.getString("password");
+                String emaill = rs.getString("email");
+                String number =rs.getString("number");
+            
+            UserSession.cleanUserSession();
+            UserSession userOnline = new UserSession(id,  role,  emaill, nom,  prenom,  number,  age,  password);
+            UserSession.setInstance(userOnline);
             if(rs.getString("role").equals("['ROLE_ADMIN']"))
             {
                
@@ -207,6 +221,22 @@ public class LoginController implements Initializable {
                
             
             
+            }
+            else
+            {
+                
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Profile.fxml"));
+        System.out.println("nextpage");
+        try {
+            Parent root = loader.load();
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene= new Scene(root);
+            stage.setScene(scene);
+            
+        } catch (IOException ex) {
+            System.out.println("error:"+ex.getMessage());
+        }
+                    
             }
             
         }

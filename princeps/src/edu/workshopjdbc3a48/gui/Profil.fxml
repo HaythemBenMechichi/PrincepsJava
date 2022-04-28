@@ -5,20 +5,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="426.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.ProfilController">
+<AnchorPane id="AnchorPane" prefHeight="426.0" prefWidth="606.0" styleClass="ajout" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.ProfilController">
    <children>
       <Label layoutX="179.0" layoutY="80.0" text="nom" />
       <Label layoutX="178.0" layoutY="109.0" text="prenom" />
       <Label layoutX="177.0" layoutY="147.0" text="email" />
       <Label layoutX="178.0" layoutY="184.0" text="age" />
       <Label layoutX="178.0" layoutY="225.0" text="number" />
-      <TextField fx:id="TextNom" layoutX="251.0" layoutY="76.0" />
-      <TextField fx:id="TextPrenom" layoutX="251.0" layoutY="114.0" />
-      <TextField fx:id="TextEmail" layoutX="251.0" layoutY="152.0" />
-      <TextField fx:id="TextAge" layoutX="251.0" layoutY="189.0" />
-      <TextField fx:id="TextNumber" layoutX="251.0" layoutY="230.0" />
-      <Button layoutX="471.0" layoutY="313.0" mnemonicParsing="false" onAction="#update" text="Enregistrer" />
-      <Button layoutX="14.0" layoutY="301.0" mnemonicParsing="false" onAction="#changePassword" text="Change passowrd" />
-      <Button layoutX="38.0" layoutY="338.0" mnemonicParsing="false" onAction="#LogOut" text="logout" />
+      <TextField fx:id="TextNom" layoutX="251.0" layoutY="76.0" stylesheets="@style.css" />
+      <TextField fx:id="TextPrenom" layoutX="251.0" layoutY="114.0" stylesheets="@style.css" />
+      <TextField fx:id="TextEmail" layoutX="251.0" layoutY="152.0" stylesheets="@style.css" />
+      <TextField fx:id="TextAge" layoutX="251.0" layoutY="189.0" stylesheets="@style.css" />
+      <TextField fx:id="TextNumber" layoutX="251.0" layoutY="230.0" stylesheets="@style.css" />
+      <Button layoutX="471.0" layoutY="313.0" mnemonicParsing="false" onAction="#update" styleClass="b" stylesheets="@style.css" text="Enregistrer" />
+      <Button layoutX="14.0" layoutY="301.0" mnemonicParsing="false" onAction="#changePassword" styleClass="b" stylesheets="@style.css" text="Change passowrd" />
+      <Button layoutX="38.0" layoutY="338.0" mnemonicParsing="false" onAction="#LogOut" styleClass="b" stylesheets="@style.css" text="logout" />
    </children>
 </AnchorPane>
