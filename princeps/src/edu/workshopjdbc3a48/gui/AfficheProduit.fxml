@@ -190,6 +190,7 @@
             <ChoiceBox fx:id="chRole" layoutX="128.0" layoutY="442.0" prefWidth="150.0" styleClass="text-field" />
             <Button layoutX="607.0" layoutY="360.0" mnemonicParsing="false" onAction="#banUser" prefHeight="25.0" prefWidth="65.0" styleClass="b" stylesheets="@style.css" text="ban" />
             <Button layoutX="512.0" layoutY="360.0" mnemonicParsing="false" onAction="#unban" prefHeight="25.0" prefWidth="65.0" styleClass="b" stylesheets="@style.css" text="Unban" />
+            <Button layoutX="152.0" layoutY="183.0" mnemonicParsing="false" onAction="#stat" prefHeight="42.0" prefWidth="84.0" styleClass="b" stylesheets="@style.css" text="stat des role" />
          </children>
       </AnchorPane>
    </children>

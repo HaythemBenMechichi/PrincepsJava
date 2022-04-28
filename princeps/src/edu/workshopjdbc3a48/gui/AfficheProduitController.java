@@ -825,4 +825,17 @@ public class AfficheProduitController implements Initializable {
             
             
     }
+
+    @FXML
+    private void stat(ActionEvent event) throws IOException {
+        //Create Stage
+Stage newWindow = new Stage();
+newWindow.setTitle("STAT DES ROLES");
+//Create view from FXML
+FXMLLoader loader = new FXMLLoader(getClass().getResource("PieChartRole.fxml"));
+//Set view in window
+newWindow.setScene(new Scene(loader.load()));
+//Launch
+newWindow.show();
+    }
 }
