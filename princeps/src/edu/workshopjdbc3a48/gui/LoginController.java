@@ -98,7 +98,10 @@ public class LoginController implements Initializable {
             while(rs.next()){
                 
                 if(BCrypt.checkpw(pw,rs.getString("password"))){
-                    Alert t = new Alert(Alert.AlertType.INFORMATION) ;
+                     if(rs.getInt("ban")==0)
+                {
+                     
+                     Alert t = new Alert(Alert.AlertType.INFORMATION) ;
                     t.setTitle("LOGIN!!");
         t.setHeaderText(null);
         t.setContentText("Welcome");
@@ -126,11 +129,22 @@ public class LoginController implements Initializable {
              else
                 {
                     Alert t = new Alert(Alert.AlertType.WARNING) ;
+                    t.setTitle("LOGIN!!");
+        t.setHeaderText(null);
+        t.setContentText("You're banned from the application !!");
+            t.showAndWait();
+                }
+                }
+                else
+                {
+                    Alert t = new Alert(Alert.AlertType.WARNING) ;
                     t.setTitle("wrong login !!");
         t.setHeaderText(null);
         t.setContentText("ERROR LORS DE CONNEXION");
             t.showAndWait();
+                    
                 }
+                   
 
                 
         }
@@ -176,7 +190,8 @@ public class LoginController implements Initializable {
             while(rs.next()){
             if(rs.getString("role").equals("['ROLE_ADMIN']"))
             {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficheProduit.fxml"));
+               
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficheProduit.fxml"));
         System.out.println("nextpage");
         try {
             Parent root = loader.load();
@@ -187,6 +202,10 @@ public class LoginController implements Initializable {
         } catch (IOException ex) {
             System.out.println("error:"+ex.getMessage());
         }
+                    
+                
+               
+            
             
             }
             
