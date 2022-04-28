@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/controller/ReclamationController.java</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/controller/TypereclamationController.java</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/service/ServiceReclamation.java</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/gui/Typereclamation.fxml</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/controller/UnetypeController.java</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/controller/ReclamationFrontController.java</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/gui/Unereclamation.fxml</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/controller/UnereclamationController.java</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/princeps/Princeps.java</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/gui/Unetype.fxml</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/controller/UnereclamationFrontController.java</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/service/ServiceTypereclamation.java</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/model/Reclamation.java</file>
+            <file>file:/D:/nouba/Princeps/src/tn/edu/esprit/gui/ReclamationFront.fxml</file>
+        </group>
+    </open-files>
+</project-private>
