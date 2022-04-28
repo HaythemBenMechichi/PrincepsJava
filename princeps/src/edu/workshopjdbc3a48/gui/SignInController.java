@@ -86,12 +86,12 @@ public class SignInController implements Initializable {
                   t.setContentText("Le nom doit Etre sup a 5");
                   t.showAndWait();
             }
-            else if(checkIfStringContainsString(Prenom) || Prenom.length()<5)
+            else if(checkIfStringContainsString(Prenom) || Prenom.length()<3)
             {
                 Alert t = new Alert(Alert.AlertType.WARNING) ;
                   t.setTitle("Missing Fields");
                   t.setHeaderText(null);
-                  t.setContentText("Le prenom doit Etre sup a 5");
+                  t.setContentText("Le prenom doit Etre sup a 3");
                   t.showAndWait();
             }
             else if( Email.indexOf("@")==-1)
@@ -101,20 +101,13 @@ public class SignInController implements Initializable {
                   t.setHeaderText(null);
                   t.setContentText("Le Email doit contenir @ ");
                   t.showAndWait();
-            }else if(checkIfStringContainsString(Prenom) || Prenom.length()<5)
-            {
-                Alert t = new Alert(Alert.AlertType.WARNING) ;
-                  t.setTitle("Missing Fields");
-                  t.setHeaderText(null);
-                  t.setContentText("Le prenom doit Etre sup a 5");
-                  t.showAndWait();
             }
             else if(checkIfStringContainsNumber(Number) || Number.length()<8)
             {
                 Alert t = new Alert(Alert.AlertType.WARNING) ;
                   t.setTitle("Missing Fields");
                   t.setHeaderText(null);
-                  t.setContentText("Le Numero ne doit pas avoir des lettres ");
+                  t.setContentText("Le Numero ne doit pas avoir des lettres ou il manque ");
                   t.showAndWait();
             }
             
