@@ -70,14 +70,54 @@ public class SignInController implements Initializable {
             String CPassword=tfConfirmpassword.getText();
 
             
-            if(Nom.equals("") || Prenom.equals("") || Email.equals("") || Email.indexOf("@")==-1||  CPassword.equals("")|| Password.equals("")|| !(Password.equals(CPassword)) || Nom.length()<5)
+            if(Nom.equals("") || Prenom.equals("") || Email.equals("") ||   CPassword.equals("")|| Password.equals("")|| !(Password.equals(CPassword)))
             {
                  Alert t = new Alert(Alert.AlertType.WARNING) ;
                   t.setTitle("Missing Fields");
                   t.setHeaderText(null);
                   t.setContentText("Missing Fields");
                   t.showAndWait();
-            }    
+            }
+            else if(checkIfStringContainsString(Nom) || Nom.length()<5)
+            {
+                Alert t = new Alert(Alert.AlertType.WARNING) ;
+                  t.setTitle("Missing Fields");
+                  t.setHeaderText(null);
+                  t.setContentText("Le nom doit Etre sup a 5");
+                  t.showAndWait();
+            }
+            else if(checkIfStringContainsString(Prenom) || Prenom.length()<5)
+            {
+                Alert t = new Alert(Alert.AlertType.WARNING) ;
+                  t.setTitle("Missing Fields");
+                  t.setHeaderText(null);
+                  t.setContentText("Le prenom doit Etre sup a 5");
+                  t.showAndWait();
+            }
+            else if( Email.indexOf("@")==-1)
+            {
+                Alert t = new Alert(Alert.AlertType.WARNING) ;
+                  t.setTitle("Missing Fields");
+                  t.setHeaderText(null);
+                  t.setContentText("Le Email doit contenir @ ");
+                  t.showAndWait();
+            }else if(checkIfStringContainsString(Prenom) || Prenom.length()<5)
+            {
+                Alert t = new Alert(Alert.AlertType.WARNING) ;
+                  t.setTitle("Missing Fields");
+                  t.setHeaderText(null);
+                  t.setContentText("Le prenom doit Etre sup a 5");
+                  t.showAndWait();
+            }
+            else if(checkIfStringContainsNumber(Number) || Number.length()<8)
+            {
+                Alert t = new Alert(Alert.AlertType.WARNING) ;
+                  t.setTitle("Missing Fields");
+                  t.setHeaderText(null);
+                  t.setContentText("Le Numero ne doit pas avoir des lettres ");
+                  t.showAndWait();
+            }
+            
             else
             { 
                 Age=Integer.parseInt(tfAge.getText());
@@ -121,5 +161,22 @@ public class SignInController implements Initializable {
             System.out.println("error:"+ex.getMessage());
         }
     }
-    
+ 
+    public boolean checkIfStringContainsString(String str){
+        for (int i=0; i<str.length();i++){
+            if(str.contains("0") || str.contains("1") || str.contains("2") || str.contains("3") || str.contains("4") || str.contains("5") || str.contains("6") || str.contains("7") || str.contains("8") || str.contains("9")){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean checkIfStringContainsNumber(String str){
+        for (int i=0; i<str.length();i++){
+            if(str.contains("a") || str.contains("b") || str.contains("c") || str.contains("d") || str.contains("e") || str.contains("f") || str.contains("g") || str.contains("h") || str.contains("i") || str.contains("j")|| str.contains("k")|| str.contains("l")|| str.contains("m")|| str.contains("n")|| str.contains("o")|| str.contains("p")|| str.contains("q")|| str.contains("r")|| str.contains("s")|| str.contains("t")|| str.contains("u")|| str.contains("v")|| str.contains("w")|| str.contains("y")|| str.contains("z")){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
