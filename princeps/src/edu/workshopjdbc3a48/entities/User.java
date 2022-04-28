@@ -13,7 +13,7 @@ public abstract class User {
     private String number;
     private String role;
     private String Password;
-    private String code;
+    private int ban;
     //constructor
 
     public User() {
@@ -145,6 +145,19 @@ public abstract class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getBan() {
+        return ban;
+    }
+
+    public void setBan(int ban) {
+        this.ban = ban;
+    }
+
+    public User(int id, int ban) {
+        this.id = id;
+        this.ban = ban;
     }
     
    

@@ -103,11 +103,7 @@ public class LoginController implements Initializable {
         t.setHeaderText(null);
         t.setContentText("Welcome");
             t.showAndWait();
-             code=Activator.get().generateCode();
-        MaillerController.get().setupServerProperties();
-       MaillerController.get().draftEmailAct(email,code);
-        MaillerController.get().sendEmail();
-        
+             
         LabelCode.setVisible(true);
         TfCode.setVisible(true);
         tfEmail.setVisible(false);
@@ -119,6 +115,11 @@ public class LoginController implements Initializable {
         LabelPass.setVisible(false);
         
         
+             code=Activator.get().generateCode();
+        MaillerController.get().setupServerProperties();
+       MaillerController.get().draftEmailAct(email,code);
+        MaillerController.get().sendEmail();
+       
         
             }
            

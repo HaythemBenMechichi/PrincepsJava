@@ -798,6 +798,12 @@ public class AfficheProduitController implements Initializable {
     }
 
     @FXML
-    private void banUser(ActionEvent event) {
+    private void banUser(ActionEvent event) throws SQLException {
+        Connection cnx = edu.workshopjdbc3a48.utils.DataSource.getInstance().getCnx();
+       User u ;
+       u = Tusers.getSelectionModel().getSelectedItem();
+             String req="UPDATE `user` SET  `ban` =1 where `user`.`id`="+u.getId();
+            Statement st = cnx.createStatement();
+            ResultSet res = st.executeQuery(req);
     }
 }
