@@ -7,6 +7,7 @@ package edu.workshopjdbc3a48.gui;
 
 import edu.workshopjdbc3a48.entities.Produit;
 import edu.workshopjdbc3a48.entities.SousCategorie;
+import edu.workshopjdbc3a48.services.ServiceCategorie;
 import edu.workshopjdbc3a48.services.ServicePersonne;
 import java.awt.Insets;
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -65,14 +67,23 @@ public class FrontProduitController implements Initializable {
     private Label DESC;
     @FXML
     private TextField tfRecherche;
+    @FXML
+    private ChoiceBox<SousCategorie> filtreSous;
+            ServiceCategorie cp = new ServiceCategorie();
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+        SousCategorie s = new SousCategorie("choisir une souscategorie") ;
+                   List<SousCategorie> list = new ArrayList<>();
+                   list= cp.geAllSousCat();
+               filtreSous.getItems().add(s);
+
+                    for (int i = 0; i < list.size(); i++) {
+                    filtreSous.getItems().add(list.get(i));
+       }
        Produit = sp.getAll();
-        
         if (Produit.size() > 0) {
             setChosenFruit(Produit.get(0));
             
@@ -82,11 +93,7 @@ public class FrontProduitController implements Initializable {
                     setChosenFruit(Produit);
                 }     
             };
-        }   
-        
-        
-        
-        
+        }
         
         int column = 0;
         int row = 1;
@@ -226,7 +233,8 @@ public class FrontProduitController implements Initializable {
     @FXML
     private void DESC(MouseEvent event) {
         
-        
+                grid.getChildren().clear();
+
          Produit = sp.getAllDESC();
         
         if (Produit.size() > 0) {
@@ -279,9 +287,115 @@ public class FrontProduitController implements Initializable {
 
     @FXML
     private void ASC(MouseEvent event) {
-        
+                grid.getChildren().clear();
+
         
          Produit = sp.getAllASC();
+        if (Produit.size() > 0) {
+            setChosenFruit(Produit.get(0));
+            
+            myListener = new MyListener() {
+            @Override
+                public void onClickListener(Produit Produit) {
+                    setChosenFruit(Produit);
+                }     
+            };
+        }
+        int column = 0;
+        int row = 1;
+        try {
+            for (int i = 0; i < Produit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+
+                fxmlLoader.setLocation(getClass().getResource("item.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(Produit.get(i),myListener);
+
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+ 
+
+    @FXML
+    private void filtr(MouseEvent event) {
+        
+        
+
+        SousCategorie sous = new SousCategorie();
+         sous = filtreSous.getValue() ;
+           if(sous.getNom_sous() == "choisir une souscategorie")
+           {
+           
+                Produit = sp.getAll();
+        if (Produit.size() > 0) {
+            setChosenFruit(Produit.get(0));
+            
+            myListener = new MyListener() {
+            @Override
+                public void onClickListener(Produit Produit) {
+                    setChosenFruit(Produit);
+                }     
+            };
+        }
+        
+        int column = 0;
+        int row = 1;
+        try {
+            for (int i = 0; i < Produit.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+
+                fxmlLoader.setLocation(getClass().getResource("item.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(Produit.get(i),myListener);
+
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+           
+           }
+           else   
+           {
+         
+                         grid.getChildren().clear();
+
+         Produit = sp.rechercheProdSous(sous);
         
         if (Produit.size() > 0) {
             setChosenFruit(Produit.get(0));
@@ -292,9 +406,7 @@ public class FrontProduitController implements Initializable {
                     setChosenFruit(Produit);
                 }     
             };
-        }   
-        
-        
+        }
         
         
         
@@ -331,5 +443,6 @@ public class FrontProduitController implements Initializable {
             e.printStackTrace();
         }
         
+           }
     }
 }

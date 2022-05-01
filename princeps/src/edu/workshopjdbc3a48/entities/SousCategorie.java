@@ -19,6 +19,10 @@ public class SousCategorie {
     }
         
    
+       public SousCategorie( String nom_sous){
+        this.nom_sous = nom_sous;
+    }
+    
      public SousCategorie( String nom_sous,Categorie cat){
         this.id = id;
         this.stat_sc = stat_sc;

@@ -160,6 +160,39 @@ public class ServicePersonne implements IService<Produit> {
     }
       
       
+     
+      
+      
+      
+      public List<Produit> rechercheProdSous(SousCategorie po) {
+        List<Produit> list = new ArrayList<>();
+        try {
+            
+            System.out.println("po = "+ po);
+                    
+            
+            String req = "Select * from  produit where id_sous_cat_id = '"+po.getId()+"'"  ;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                SousCategorie s = new SousCategorie();
+                s = getSousCat(rs.getInt("id_sous_cat_id"));
+                Produit p = new Produit( rs.getString("libelle"), rs.getInt("quantite"),rs.getString("description"),rs.getString("image_p"),rs.getFloat("prix"),s);
+           System.out.println("p="+p);
+                           list.add(p);
+
+             }
+                            return list;
+
+         }
+         catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return (list);
+    }
+      
+      
+      
       
     
     public SousCategorie getSousCat(int id)
@@ -174,6 +207,7 @@ public class ServicePersonne implements IService<Produit> {
                 cat=getCat(rs.getInt("id_cat_id"));
                 SousCategorie c = new SousCategorie(rs.getInt("id"), rs.getInt("stat_sc"), rs.getString("nom_sous"),cat);
             //    System.out.println("p="+c);
+            
                 return c;
              }
          }
