@@ -196,12 +196,9 @@ public class FrontProduitController implements Initializable {
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
             }
-        } else
+        } 
+       else
        {
-           
-           
-       
-       
          int column = 0;
         int row = 1;
          FXMLLoader fxmlLoader = new FXMLLoader();
@@ -337,8 +334,6 @@ public class FrontProduitController implements Initializable {
     @FXML
     private void filtr(MouseEvent event) {
         
-        
-
         SousCategorie sous = new SousCategorie();
          sous = filtreSous.getValue() ;
            if(sous.getNom_sous() == "choisir une souscategorie")
@@ -407,9 +402,6 @@ public class FrontProduitController implements Initializable {
                 }     
             };
         }
-        
-        
-        
         int column = 0;
         int row = 1;
         try {
@@ -426,18 +418,15 @@ public class FrontProduitController implements Initializable {
                     column = 0;
                     row++;
                 }
-
                 grid.add(anchorPane, column++, row); //(child,column,row)
                 //set grid width
                 grid.setMinWidth(Region.USE_COMPUTED_SIZE);
                 grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
                 grid.setMaxWidth(Region.USE_PREF_SIZE);
-
                 //set grid height
                 grid.setMinHeight(Region.USE_COMPUTED_SIZE);
                 grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
-
             }
         } catch (IOException e) {
             e.printStackTrace();
