@@ -239,10 +239,6 @@ public class AfficheProduitController implements Initializable {
         }
         return list;
     }
-    
-    
-        
-        
     public void affiche() {      
         colLibelle.setCellValueFactory(new PropertyValueFactory<>("libelle"));
         colQuantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
@@ -256,11 +252,8 @@ public class AfficheProduitController implements Initializable {
       tableProd.setItems(obl);
       System.out.println(""+obl);        
     }
-    
-    
     @FXML
     private void supprimer(ActionEvent event) {
-        
         System.out.println("teeeeessttt");
         ServicePersonne Offres = new ServicePersonne();
         Produit p = new Produit();
@@ -276,10 +269,6 @@ public class AfficheProduitController implements Initializable {
     private void RetourMenu(ActionEvent event) {
         
     }
-
-    
-    
-    
     @FXML
     private void rowClicked(MouseEvent event) {
         Produit e = tableProd.getSelectionModel().getSelectedItem();
@@ -311,14 +300,10 @@ public class AfficheProduitController implements Initializable {
              Produit p = new Produit(Integer.valueOf(tfId.getText()),tfLibelle.getText(),Integer.valueOf(tfQuantite.getText()),tfDescription.getText(),fn,Float.valueOf(tfPrix.getText()),chbCat.getValue());
              System.out.println("p = "+p.getA().getId());
              sp.modifier(p);
-             
              if(p.getQuantite()==0)
-             {
-                 
+             {    
                  System.out.println("out of stock");
              }
-             
-             
             refreshData();
             clear();
         }
