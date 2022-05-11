@@ -48,7 +48,8 @@ public class ChangePasswordController implements Initializable {
 
     @FXML
     private void returnPahe(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Profil.fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("Profil.fxml"));
+        System.out.println("nextpage");
         try {
             Parent root = loader.load();
             Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -58,7 +59,11 @@ public class ChangePasswordController implements Initializable {
         } catch (IOException ex) {
             System.out.println("error:"+ex.getMessage());
         }
-    }
+                    
+            }
+            
+        
+    
 
     @FXML
     private void updatePassword(ActionEvent event) {
