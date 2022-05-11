@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -35,7 +31,7 @@ public void draftEmailAct(String email,String Code) throws AddressException, Mes
     String emailReceipients = email;
     //Enter list of email recepients
     String emailSubject = "Account Confirmation";
-    String emailBody = "Hello , Your activation code is : "+Code+", Please use it to activate your account in the app";
+    String emailBody = "Hello , Your activation code is : "+Code+", Please use it to connect to your account in the app";
     mimeMessage = new MimeMessage(newSession);
 
         mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(emailReceipients));
