@@ -152,12 +152,14 @@
                               <Font name="Cambria" size="18.0" />
                            </font>
                         </Label>
-                        <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
-                        <Label prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
-                           <font>
-                              <Font name="Cambria" size="18.0" />
-                           </font>
-                        </Label>
+                        <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label layoutX="461.0" layoutY="5.0" onMouseClicked="#ProfilAffiche" prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
+                                 <font>
+                                    <Font name="Cambria" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
                         <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../../../Fruits-Market-master/FruitMarket/src/img/ic_cart.png" />

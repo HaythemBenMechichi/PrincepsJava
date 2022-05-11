@@ -434,4 +434,11 @@ public class FrontProduitController implements Initializable {
         
            }
     }
+
+    @FXML
+    private void ProfilAffiche(MouseEvent event) {
+    
+    // lehne ya hassen
+    
+    }
 }
