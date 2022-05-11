@@ -69,6 +69,11 @@
                </font>
             </Text>
             <TextField fx:id="tfDescription" layoutX="97.0" layoutY="540.0" prefHeight="133.0" prefWidth="177.0" />
+            <Label layoutX="802.0" layoutY="76.0" onMouseClicked="#printpdf" text=" PDF" textOverrun="WORD_ELLIPSIS" underline="true">
+               <font>
+                  <Font name="Aldhabi" size="32.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="ancSideNav" prefHeight="806.0" prefWidth="200.0" styleClass="grad-jnab" stylesheets="@style.css">

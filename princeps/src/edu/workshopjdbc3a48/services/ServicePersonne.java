@@ -98,6 +98,9 @@ public class ServicePersonne implements IService<Produit> {
     
     
     
+     
+     
+     
     
     @Override
     public void modifier(Produit p) {
@@ -131,7 +134,66 @@ public class ServicePersonne implements IService<Produit> {
     }
     
     
-    
+     
+      public Produit rechercheProd(String po) {
+          Produit cat= new Produit();
+        try {
+            
+            System.out.println("po = "+ po);
+                    
+            
+            String req = "Select * from  produit where libelle = '"+po+"'"  ;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                SousCategorie s = new SousCategorie();
+                s = getSousCat(rs.getInt("id_sous_cat_id"));
+                Produit p = new Produit( rs.getString("libelle"), rs.getInt("quantite"),rs.getString("description"),rs.getString("image_p"),rs.getFloat("prix"),s);
+           System.out.println("p="+p);
+                return p;
+             }
+         }
+         catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return (cat);
+    }
+      
+      
+     
+      
+      
+      
+      public List<Produit> rechercheProdSous(SousCategorie po) {
+        List<Produit> list = new ArrayList<>();
+        try {
+            
+            System.out.println("po = "+ po);
+                    
+            
+            String req = "Select * from  produit where id_sous_cat_id = '"+po.getId()+"'"  ;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                SousCategorie s = new SousCategorie();
+                s = getSousCat(rs.getInt("id_sous_cat_id"));
+                Produit p = new Produit( rs.getString("libelle"), rs.getInt("quantite"),rs.getString("description"),rs.getString("image_p"),rs.getFloat("prix"),s);
+           System.out.println("p="+p);
+                           list.add(p);
+
+             }
+                            return list;
+
+         }
+         catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return (list);
+    }
+      
+      
+      
+      
     
     public SousCategorie getSousCat(int id)
     {
@@ -145,6 +207,7 @@ public class ServicePersonne implements IService<Produit> {
                 cat=getCat(rs.getInt("id_cat_id"));
                 SousCategorie c = new SousCategorie(rs.getInt("id"), rs.getInt("stat_sc"), rs.getString("nom_sous"),cat);
             //    System.out.println("p="+c);
+            
                 return c;
              }
          }
@@ -204,6 +267,58 @@ public class ServicePersonne implements IService<Produit> {
         return list;
     }
 
+    
+    
+    
+    public List<Produit> getAllASC() {
+        List<Produit> list = new ArrayList<>();
+        try {
+            String req = "Select * from produit ORDER BY prix ASC ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                SousCategorie s = new SousCategorie();
+                s = getSousCat(rs.getInt("id_sous_cat_id"));
+               // System.out.println("s = "+s);
+                Produit p = new Produit( rs.getString("libelle"), rs.getInt("quantite"),rs.getString("description"),rs.getString("image_p"),rs.getFloat("prix"),s);
+               // System.out.println("p="+p);
+                list.add(p);
+            }
+                  
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+    
+    
+    
+     public List<Produit> getAllDESC() {
+        List<Produit> list = new ArrayList<>();
+        try {
+            String req = "Select * from produit ORDER BY prix DESC ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                SousCategorie s = new SousCategorie();
+                s = getSousCat(rs.getInt("id_sous_cat_id"));
+               // System.out.println("s = "+s);
+                Produit p = new Produit( rs.getString("libelle"), rs.getInt("quantite"),rs.getString("description"),rs.getString("image_p"),rs.getFloat("prix"),s);
+               // System.out.println("p="+p);
+                list.add(p);
+            }
+                  
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+    
+    
+    
+    
     @Override
     public void ajouter(Produit p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

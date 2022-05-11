@@ -13,7 +13,9 @@
 }
 
 .right-bar{
-    -fx-background-color: #D3D3D3;
+    -fx-background-color: #5e95ad;
+   -fx-background-radius: 30;
+
 }
 
 .shadow{
@@ -21,7 +23,7 @@
 }
 
 .chosen-fruit-card{
-    -fx-background-color: #F16C31;
+    -fx-background-color: #c8d3de;
     -fx-background-radius: 30;
 }
 
@@ -41,11 +43,11 @@
 }
 
 .shopping-online-card{
-    -fx-background-color: #BAEAC3;
+    -fx-background-color: #D3D3D3;
     -fx-background-radius: 30;
 }
 
 .fruit-item{
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #b8c4d4;
         -fx-background-radius: 30;
 }
