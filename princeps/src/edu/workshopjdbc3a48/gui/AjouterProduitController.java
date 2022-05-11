@@ -62,7 +62,7 @@ public class AjouterProduitController implements Initializable {
     private Button btnAjouter;
     @FXML
     private ImageView uploadIv;
-    String uploads = "C:\\Users\\haythem\\Desktop\\PrincepsJava\\princeps\\src\\edu\\workshopjdbc3a48\\img";
+    String uploads = "C:\\Users\\hassen\\Desktop\\PrincepsJava\\princeps\\src\\edu\\workshopjdbc3a48\\img";
     private String path = "", imgname = "", fn="";
     @FXML
     private Button btn_Retour;

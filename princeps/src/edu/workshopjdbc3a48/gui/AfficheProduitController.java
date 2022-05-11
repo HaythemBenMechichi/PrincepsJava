@@ -5,6 +5,7 @@
  */
 package edu.workshopjdbc3a48.gui;
 
+import Controller.UserSession;
 import com.pdfjet.A4;
 import com.pdfjet.Cell;
 import com.pdfjet.CoreFont;
@@ -12,12 +13,22 @@ import com.pdfjet.Font;
 import com.pdfjet.PDF;
 import com.pdfjet.Page;
 import com.pdfjet.Table;
+import edu.workshopjdbc3a48.entities.Admin;
 import edu.workshopjdbc3a48.entities.Categorie;
+import edu.workshopjdbc3a48.entities.Client;
+import edu.workshopjdbc3a48.entities.Evenement;
+import edu.workshopjdbc3a48.entities.EventProd;
+import edu.workshopjdbc3a48.entities.Livreur;
 import edu.workshopjdbc3a48.entities.Produit;
 import edu.workshopjdbc3a48.entities.SousCategorie;
+import edu.workshopjdbc3a48.entities.User;
 import edu.workshopjdbc3a48.services.ServiceCategorie;
+import edu.workshopjdbc3a48.services.ServiceEvenement;
 import edu.workshopjdbc3a48.services.ServicePersonne;
+import edu.workshopjdbc3a48.services.ServicePromotion;
+import edu.workshopjdbc3a48.services.UserServices;
 import edu.workshopjdbc3a48.utils.DataSource;
+import java.awt.Desktop;
 
 import java.sql.Statement;
 
@@ -27,22 +38,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 
 import javax.swing.JOptionPane;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -78,10 +73,34 @@ import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
 import java.io.FileInputStream;
 import java.nio.channels.FileChannel;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javax.swing.JFileChooser;
-
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import javafx.print.JobSettings;
+import javafx.print.PageLayout;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
 
 
 
@@ -139,8 +158,8 @@ public class AfficheProduitController implements Initializable {
     private TextField tfId;
     
     
-    String uploads = "C:\\Users\\haythem\\Desktop\\PrincepsJava\\princeps\\src\\edu\\workshopjdbc3a48\\img";
-    String upload = "C:\\Users\\haythem\\Desktop\\PrincepsJava\\princeps\\src\\edu\\workshopjdbc3a48\\";
+    String uploads = "C:\\Users\\user\\Documents\\final\\PrincepsJava\\princeps\\src\\edu\\workshopjdbc3a48";
+    String upload = "C:\\Users\\user\\Documents\\final\\PrincepsJava\\princeps\\src\\edu\\workshopjdbc3a48";
 
     private String path = "", imgname = "", fn="";
     @FXML
@@ -173,6 +192,7 @@ public class AfficheProduitController implements Initializable {
     private Button btnUploadCat;
     @FXML
     private Button btnUpdateCat;
+    
     @FXML
     private TextField tfidCat;
     @FXML
@@ -183,8 +203,121 @@ public class AfficheProduitController implements Initializable {
     private TableColumn<SousCategorie, Integer> colIdSous;
     @FXML
     private TextField tfIdSous;
+    @FXML
+    private AnchorPane ancuser;
+    
+      String name = null;
+    Date dateDeb, dateFin = null;
 
+    Mail mailClass = new Mail();
 
+    
+    @FXML
+    private TableView<User> Tusers;
+    @FXML
+    private TableColumn<User, String> ColNom;
+    @FXML
+    private TableColumn<User, String> Colprenom;
+    @FXML
+    private TableColumn<User, Integer> ColAge;
+    @FXML
+    private TableColumn<User, String> Colemail;
+    @FXML
+    private TableColumn<User, String> Colrole;
+    @FXML
+    private TableColumn<User, Integer> ColNumber;
+    @FXML
+    private TableColumn<User, Integer> ColId;
+    @FXML
+    private Label TFNOM;
+    @FXML
+    private TextField Tfnom;
+    @FXML
+    private TextField Tfprenom;
+    @FXML
+    private TextField Tfage;
+    @FXML
+    private TextField Tfemail;
+    @FXML
+    private TextField Tfnumber;
+    @FXML
+    private TextField Tfid;
+    @FXML
+    private ChoiceBox<String> chRole;
+    @FXML
+    private ChoiceBox<String> chRoleRech;
+    @FXML
+    private TableView<Evenement> TableEvenement;
+    @FXML
+    private TableColumn<Evenement, String> colNom;
+    @FXML
+    private TableColumn<Evenement,Date> coldatedebut;
+    @FXML
+    private TableColumn<Evenement, Date> coldatefin;
+    @FXML
+    private TableColumn<Evenement, String> colimage;
+    @FXML
+    private TextField tfNom;
+    @FXML
+    private Button btnModifier;
+    @FXML
+    private ImageView uploadIv1;
+    @FXML
+    private DatePicker tfDateFin;
+    @FXML
+    private DatePicker tfDateDeb;
+    @FXML
+    private Button btnAjouter;
+    @FXML
+    private Button btnSupprimer;
+    @FXML
+    private Button btnReset;
+    @FXML
+    private Button btnUpload;
+    @FXML
+    private TextField ftsearch;
+
+    ServiceEvenement se = new ServiceEvenement();
+    ObservableList listEvents = FXCollections.observableArrayList();
+    int evID = 0;
+    @FXML
+    private AnchorPane ancEvent;
+    @FXML
+    private Button btnEvement;
+    @FXML
+    private Button btnPromo;
+    @FXML
+    private AnchorPane andPromo;
+    @FXML
+    private TableView<EventProd> TablePromotion;
+    @FXML
+    private TableColumn<EventProd, Integer> colRefProd;
+    @FXML
+    private TableColumn<EventProd, String> colProd;
+    @FXML
+    private TableColumn<EventProd, Double> colTaux;
+    @FXML
+    private TableColumn<EventProd, Evenement> colEvenement;
+    @FXML
+    private TextField tfNom1;
+    @FXML
+    private TextField tfTaux;
+    @FXML
+    private ComboBox<Evenement> tfEvenement;
+    @FXML
+    private Button btnAjouter2;
+    @FXML
+    private TextField tfRefProd;
+    @FXML
+    private Button btnModifier1;
+    @FXML
+    private Button btnSupprimer1;
+    @FXML
+    private Button btnAjouter1;
+    ServicePromotion prod = new ServicePromotion();
+    ObservableList listPromotions = FXCollections.observableArrayList();
+    ObservableList<EventProd> listprod;
+    int promID = 0;
 
     /**
      * Initializes the controller class.
@@ -193,8 +326,27 @@ public class AfficheProduitController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) { 
         
+        colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        coldatedebut.setCellValueFactory(new PropertyValueFactory<>("DateDebut"));
+        coldatefin.setCellValueFactory(new PropertyValueFactory<>("DateFin"));
+        colimage.setCellValueFactory(new PropertyValueFactory<>("image"));
+        refreshData();
+        clear();
+        
+          setNumericConstraint();
+        colProd.setCellValueFactory(new PropertyValueFactory<>("nom_produit"));
+        colRefProd.setCellValueFactory(new PropertyValueFactory<>("ref_produit"));
+        colTaux.setCellValueFactory(new PropertyValueFactory<>("taux"));
+        colEvenement.setCellValueFactory(new PropertyValueFactory<>("evenement_id"));
+        refreshData();
+        clear();
+        
            ancProduit.setVisible(true);
           ancCat.setVisible(false);
+          ancEvent.setVisible(false);        
+          ancuser.setVisible(false);
+          andPromo.setVisible(false);
+
 
         
         
@@ -215,7 +367,18 @@ public class AfficheProduitController implements Initializable {
 
        
     }
-    
+     private void setNumericConstraint() {
+        tfTaux.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                tfTaux.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+        tfRefProd.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                tfRefProd.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+    }
     
     
         public ObservableList<Produit> getAllP() {
@@ -328,7 +491,8 @@ public class AfficheProduitController implements Initializable {
     private void refreshData() {
             ObservableList listProd = FXCollections.observableArrayList();
             ObservableList listCat = FXCollections.observableArrayList();
-
+ listEvents = se.getAll();
+        TableEvenement.setItems(listEvents);
             listProd = getAllP();
         listCat = getAllC();
         tableProd.setItems(listProd);
@@ -343,6 +507,11 @@ public class AfficheProduitController implements Initializable {
         tfQuantite.clear();
         tfPrix.clear();
         tfDescription.clear();
+        
+         tfNom.clear();
+        tfDateDeb.setValue(null);
+        tfDateFin.setValue(null);
+        uploadIv.setImage(null);
     }
     
     public void copyFile(File sourceFile, File destFile) throws IOException {
@@ -394,11 +563,11 @@ public class AfficheProduitController implements Initializable {
 
     @FXML
     private void changeCat(ActionEvent event) {
-        
-        
            ancProduit.setVisible(false);
           ancCat.setVisible(true);
-
+          ancEvent.setVisible(false);
+                  ancuser.setVisible(false);
+andPromo.setVisible(false);
         
     }
 
@@ -409,7 +578,11 @@ public class AfficheProduitController implements Initializable {
         
            ancProduit.setVisible(true);
           ancCat.setVisible(false);
-        
+                  ancuser.setVisible(false);
+
+                  ancEvent.setVisible(false);
+                  andPromo.setVisible(false);
+
     }
 
     
@@ -692,6 +865,623 @@ for ( i=0 ; i<li.size();i++){
        
         
     }
+                //User
+    @FXML
+    private void rowClickedTUser(MouseEvent event) {
+         User u = Tusers.getSelectionModel().getSelectedItem();
+      //  fn = e.getImage();
+      //  uploadIv.setImage(new Image("file:" + uploads + e.getImage()));
+        Tfnom.setText(u.getName());
+        Tfid.setText(""+(u.getId()));
+        Tfprenom.setText(u.getPrenom());
+        Tfage.setText(""+u.getAge());
+        Tfemail.setText(u.getEmail());
+        if(u.getRole().equals("Admin"))
+        {
+            chRole.setValue("Admin");
+        }
+        else if(u.getRole().equals("Client"))
+        {
+        chRole.setValue("Client");
+        }
+        else
+        {
+            chRole.setValue("Livreur");
+        }
+       
+        Tfnumber.setText(u.getNumber());
+       // tfDateFin.setValue(e.getDateFin().toLocalDate());
+    }
+
+    @FXML
+    private void Delete(ActionEvent event) {
+        Alert t = new Alert(Alert.AlertType.CONFIRMATION) ;
+                    t.setTitle("Delete");
+        t.setHeaderText(null);
+        t.setContentText("confirmer de suprimer");
+            t.showAndWait();
+         System.out.println("teeeeessttt");
+        UserServices p = new UserServices();
+                User u ;
+        u = Tusers.getSelectionModel().getSelectedItem();
+
+        System.out.println("p"+u);
+           
+       
+        System.out.println("id = " + u.getId());
+       p.supprimerUser(u.getId());
+           
+       
+        try {
+            afficheUser();
+        } catch (SQLException ex) {
+            Logger.getLogger(AfficheUserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Tusers.refresh();
+      
+            clearUser();
+    }
+
+    @FXML
+    private void Update(ActionEvent event) throws SQLException {
+          UserServices US = new UserServices();
+
+  if (Tfnom.getText().isEmpty() || Tfprenom.getText().isEmpty() || Tfage.getText().isEmpty() || Tfnumber.getText().isEmpty()|| Tfemail.getText().isEmpty())
+  {    
+      JOptionPane.showMessageDialog(null, "Veuillez vérifier les champs !");
+        }
+ else
+        {
+             User u ;
+             if(chRole.getValue().equals("Admin"))
+             {
+               u = new  Admin(Integer.valueOf(Tfid.getText()),Integer.valueOf(Tfage.getText()),Tfnom.getText(),Tfprenom.getText(),Tfemail.getText(),Tfnumber.getText(),"[\\'ROLE_ADMIN\\']");
+             }
+             else if(chRole.getValue().equals("Client"))
+             {
+                 u = new  Client(Integer.valueOf(Tfid.getText()),Integer.valueOf(Tfage.getText()),Tfnom.getText(),Tfprenom.getText(),Tfemail.getText(),Tfnumber.getText(),"[\\'ROLE_CLIENT\\']");
+             }
+             else{
+                 u = new  Livreur(Integer.valueOf(Tfid.getText()),Integer.valueOf(Tfage.getText()),Tfnom.getText(),Tfprenom.getText(),Tfemail.getText(),Tfnumber.getText(),"[\\'ROLE_LIVREUR\\']");
+             }
+                System.out.println("u= "+ u.getId());
+           
+            System.out.println("p = "+u.getId());
+             US.modifierUser(u);
+            JOptionPane.showMessageDialog(null, "User modifié avec succés");
+            refreshDataUser();
+            clearUser();
+        }
+    }
+     public ObservableList<User> getAllUser() throws SQLException {
+           
+            
+        Connection cnx = edu.workshopjdbc3a48.utils.DataSource.getInstance().getCnx();
+       
+       
+             String req="select id,age,nom,prenom,email,number,role from user";
+            Statement st = cnx.createStatement();
+            ResultSet res = st.executeQuery(req);
+          ObservableList<User> list = FXCollections.observableArrayList();
+                User u ;
+                 while (res.next()) {
+            if("['ROLE_ADMIN']".equals(res.getString("role")))
+            {
+                
+                u = new Admin(res.getInt("id"), res.getInt("age"),res.getString("nom"),res.getString("prenom"),res.getString("email"),res.getString("number"),"Admin");
+            }
+            else if("['ROLE_CLIENT']".equals(res.getString("role")))
+            {
+                u = new Client(res.getInt("id"),res.getInt("age"),res.getString("nom"),res.getString("prenom"),res.getString("email"),res.getString("number"),"Client");
+            }
+            else
+            {
+                u = new Livreur(res.getInt("id"), res.getInt("age"),res.getString("nom"),res.getString("prenom"),res.getString("email"),res.getString("number"),"Livreur");
+            }
+            list.add(u);
+    
+            
+            }
+        return list;
+    }
+ public void afficheUser() throws SQLException {   
+        ColNom.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        ColAge.setCellValueFactory(new PropertyValueFactory<>("Age"));
+        Colemail.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        ColNumber.setCellValueFactory(new PropertyValueFactory<>("number"));
+        Colprenom.setCellValueFactory(new PropertyValueFactory<>("Prenom"));
+        Colrole.setCellValueFactory(new PropertyValueFactory<>("Role"));
+        ColId.setCellValueFactory(new PropertyValueFactory<>("Id"));
+      ObservableList<User> obl =FXCollections.observableArrayList();
+      obl=getAllUser();
+      Tusers.setItems(obl);
+      System.out.println(""+obl);        
+    }
+      private void refreshDataUser() throws SQLException {
+            ObservableList listUser = FXCollections.observableArrayList();
+        listUser = getAllUser();
+        Tusers.setItems(listUser);
+    }
+      private void clearUser() {
+        Tfnom.clear();
+        Tfid.clear();
+        Tfprenom.clear();
+        Tfage.clear();
+        Tfemail.clear();
+        
+        Tfnumber.clear();
+    }
+    @FXML
+    private void banUser(ActionEvent event) throws SQLException {
+         Connection cnx = edu.workshopjdbc3a48.utils.DataSource.getInstance().getCnx();
+       User u ;
+       u = Tusers.getSelectionModel().getSelectedItem();
+             String req="UPDATE `user` SET  `ban` =1 where `user`.`id`="+u.getId();
+           Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+            System.out.println("user banned");
+    }
+
+    @FXML
+    private void unban(ActionEvent event) {
+         Connection cnx = edu.workshopjdbc3a48.utils.DataSource.getInstance().getCnx();
+       User u ;
+       u = Tusers.getSelectionModel().getSelectedItem();
+             String req="UPDATE `user` SET  `ban` =0 where `user`.`id`="+u.getId();
+           Statement st;
+        try {
+            st = cnx.createStatement();
+            st.executeUpdate(req);
+            System.out.println("user banned");
+        } catch (SQLException ex) {
+            
+        }
+    }
+
+    @FXML
+    private void stat(ActionEvent event) throws IOException {
+          //Create Stage
+Stage newWindow = new Stage();
+newWindow.setTitle("STAT DES ROLES");
+//Create view from FXML
+FXMLLoader loader = new FXMLLoader(getClass().getResource("PieChartRole.fxml"));
+//Set view in window
+newWindow.setScene(new Scene(loader.load()));
+//Launch
+newWindow.show();
+    }
+
+    @FXML
+    private void recherche(ActionEvent event) throws SQLException {
+        ObservableList<User>  list =  FXCollections.observableArrayList();
+          try {
+            Connection cnx = DataSource.getInstance().getCnx();
+            String text ;
+            if(chRoleRech.getValue().equals("Admin"))
+             {
+               text="[\\'ROLE_ADMIN\\']";
+             }
+             else if(chRoleRech.getValue().equals("Client"))
+             {
+                text="[\\'ROLE_CLIENT\\']";
+             }
+             else{
+                text="[\\'ROLE_LIVREUR\\']";
+             }
+            
+            ResultSet res = cnx.createStatement().executeQuery("SELECT * FROM user where role ='" + text + "'");
+            
+                 User u ;
+                 while (res.next()) {
+            if("['ROLE_ADMIN']".equals(res.getString("role")))
+            {
+                
+                u = new Admin(res.getInt("id"), res.getInt("age"),res.getString("nom"),res.getString("prenom"),res.getString("email"),res.getString("number"),"Admin");
+            }
+            else if("['ROLE_CLIENT']".equals(res.getString("role")))
+            {
+                u = new Client(res.getInt("id"),res.getInt("age"),res.getString("nom"),res.getString("prenom"),res.getString("email"),res.getString("number"),"Client");
+            }
+            else
+            {
+                u = new Livreur(res.getInt("id"), res.getInt("age"),res.getString("nom"),res.getString("prenom"),res.getString("email"),res.getString("number"),"Livreur");
+            }
+            list.add(u);
+                 
+        }
+          }catch (SQLException ex) {
+           System.out.println(ex);
+        }
+afficheUser();
+     
+ Tusers.setItems(list);
+  Tusers.refresh();
+
+    
+    }
+
+    @FXML
+    private void Userfen(ActionEvent event) throws SQLException {
+        ancProduit.setVisible(false);
+          ancCat.setVisible(false);
+                    ancEvent.setVisible(false);
+andPromo.setVisible(false);
+        ancuser.setVisible(true);
+        afficheUser();
+        
+        chRoleRech.getItems().add("Livreur");
+        chRoleRech.getItems().add("Client");
+        chRoleRech.getItems().add("Admin");
+        
+        
+        chRole.getItems().add("Livreur");
+        chRole.getItems().add("Client");
+        chRole.getItems().add("Admin");
+        
+        Tusers.refresh();
+    }
+
+    @FXML
+    private void LogOut(ActionEvent event) {
+         UserSession.cleanUserSession();
+
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        try {
+            Parent root = loader.load();
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene= new Scene(root);
+            stage.setScene(scene);
+            
+        } catch (IOException ex) {
+            System.out.println("error:"+ex.getMessage());
+        }
+    }
+    
+    
+    
+    
+    
+                                         //EVENEMENT
+
+    @FXML
+    private void ajouter(ActionEvent event) {
+       if (tfNom.getText() == null || tfDateDeb.getValue() == null || tfDateFin.getValue() == null) {
+            JOptionPane.showMessageDialog(null, "Veuillez vérifier les champs !");
+        } else if (tfDateDeb.getValue().isAfter(tfDateFin.getValue()) || tfDateDeb.getValue().isBefore(LocalDate.now()) || tfDateFin.getValue().isBefore(LocalDate.now())) {
+            JOptionPane.showMessageDialog(null, "Veuillez vérifier les dates !");
+        } else {
+            Evenement ev = new Evenement(tfNom.getText(), Date.valueOf(tfDateDeb.getValue()), Date.valueOf(tfDateFin.getValue()), imgname);
+            name = tfNom.getText();
+            dateDeb = Date.valueOf(tfDateDeb.getValue());
+            dateFin = Date.valueOf(tfDateFin.getValue());
+            se.ajouter(ev);
+            JOptionPane.showMessageDialog(null, "Evénement ajouté avec succés");
+            refreshData();
+            clear();
+            mailClass.sendMail(name, dateDeb, dateFin);
+        }
+    }
+        ServiceEvenement UP = new ServiceEvenement();
+
+    
+       private ObservableList<Evenement> getTableList() {
+
+        ObservableList<Evenement> List = UP.getAll();
+        return List;
+    }
+    
+    
+
+    @FXML
+    private void reset(ActionEvent event) {
+        
+          btnAjouter.setDisable(false);
+        btnModifier.setDisable(true);
+        btnSupprimer.setDisable(true);
+        clear();
+    }
+
+    
+      FilteredList<Evenement> filter = new FilteredList<>(getTableList(), e -> true);
+    SortedList<Evenement> sort = new SortedList<>(filter);
+    
+    @FXML
+    private void search(KeyEvent event) {
+         ftsearch.setOnKeyReleased(new EventHandler<KeyEvent>() {
+             @Override
+             public void handle(KeyEvent e) {
+                 ftsearch.textProperty().addListener((observable, oldValue, newValue) -> {
+                     filter.setPredicate(t -> {
+                         if (newValue == null || newValue.isEmpty()) {
+                             return true;
+                         }
+                         String lowerCaseFilter = newValue.toLowerCase();
+                         if (String.valueOf(t.getNom()).toLowerCase().contains(lowerCaseFilter)) {
+                             return true;
+                         } else {
+                             return false;
+                         }
+                     });
+                 });
+                 
+//                 sort.comparatorProperty().bind(TableEvenement.comparatorProperty());
+//                 TableEvenement.setItems(sort);
+             }
+         });
+
+    }
+
+
+    
+
+    
+
+
+    @FXML
+    private void modifierEvent(ActionEvent event) {
+            if (tfNom.getText() == null || tfDateDeb.getValue() == null || tfDateFin.getValue() == null) {
+            JOptionPane.showMessageDialog(null, "Veuillez vérifier les champs !");
+        } else if (tfDateDeb.getValue().isAfter(tfDateFin.getValue()) || tfDateDeb.getValue().isBefore(LocalDate.now()) || tfDateFin.getValue().isBefore(LocalDate.now())) {
+            JOptionPane.showMessageDialog(null, "Veuillez vérifier les dates !");
+        } else {
+            Evenement ev = new Evenement(evID, tfNom.getText(), Date.valueOf(tfDateDeb.getValue()), Date.valueOf(tfDateFin.getValue()), fn);
+            se.modifier(ev);
+            JOptionPane.showMessageDialog(null, "Evénement modifié avec succés");
+            refreshData();
+            clear();
+        }
+    }
+
+
+
+    @FXML
+    private void supprimerEvent(ActionEvent event) {
+        
+          Evenement e = (Evenement) TableEvenement.getSelectionModel().getSelectedItem();
+        se.supprimer(e.getId());
+        JOptionPane.showMessageDialog(null, "Evénement supprimé avec succés");
+        refreshData();
+        btnAjouter.setDisable(false);
+        btnModifier.setDisable(true);
+        btnSupprimer.setDisable(true);
+        clear();
+        
+    }
+
+    @FXML
+    private void rowClickedEvent(MouseEvent event) {
+       btnAjouter.setDisable(true);
+        btnModifier.setDisable(false);
+        btnSupprimer.setDisable(false);
+        Evenement e = (Evenement) TableEvenement.getSelectionModel().getSelectedItem();
+        evID = e.getId();
+        fn = e.getImage();
+
+        uploadIv.setImage(new Image("file:" + uploads + e.getImage()));
+
+        tfNom.setText(e.getNom());
+        tfDateDeb.setValue(e.getDateDebut().toLocalDate());
+        tfDateFin.setValue(e.getDateFin().toLocalDate());
+    }
+
+    @FXML
+    private void uploadEvent(ActionEvent event) throws IOException {
+        
+           JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        path = f.getAbsolutePath();
+        imgname = f.getName();
+        fn = imgname;
+        Image getAbsolutePath = null;
+
+        String dd = uploads + f.getName();
+        File dest = new File(dd);
+        this.copyFile(f, dest);
+
+        System.out.println(dd);
+
+        uploadIv1.setImage(new Image("file:" + dest.getAbsolutePath()));
+    }
+
+    @FXML
+    private void EventFen(ActionEvent event) {
+        
+          ancProduit.setVisible(false);
+          ancCat.setVisible(false);
+                    ancEvent.setVisible(true);
+        ancuser.setVisible(false);
+        andPromo.setVisible(false);
+    }
+
+    @FXML
+    private void PromoFnt(ActionEvent event) {
+        ancProduit.setVisible(false);
+          ancCat.setVisible(false);
+                    ancEvent.setVisible(false);
+        ancuser.setVisible(false);
+        andPromo.setVisible(true);
+        setNumericConstraint();
+        colProd.setCellValueFactory(new PropertyValueFactory<>("nom_produit"));
+        colRefProd.setCellValueFactory(new PropertyValueFactory<>("ref_produit"));
+        colTaux.setCellValueFactory(new PropertyValueFactory<>("taux"));
+        colEvenement.setCellValueFactory(new PropertyValueFactory<>("evenement_id"));
+        refreshDataprod();
+        clearprod();
+        
+    }
+
+    @FXML
+    private void ajouterPromo(ActionEvent event) {
+        if (tfNom.getText() == null || tfRefProd.getText() == null || tfTaux.getText() == null || tfEvenement.getValue() == null) {
+            JOptionPane.showMessageDialog(null, "Veuillez vérifier les champs !");
+        } else {
+            EventProd ev = new EventProd(tfNom.getText(), Integer.parseInt(tfRefProd.getText()), Double.parseDouble(tfTaux.getText()), tfEvenement.getValue());
+            prod.ajouter(ev);
+            JOptionPane.showMessageDialog(null, "Promotion ajoutée avec succés");
+            refreshData();
+            clear();
+        }
+    }
+
+    @FXML
+    private void modifierPromo(ActionEvent event) {
+        if (tfNom.getText() == null || tfRefProd.getText() == null || tfTaux.getText() == null || tfEvenement.getValue() == null) {
+            JOptionPane.showMessageDialog(null, "Veuillez vérifier les champs !");
+        } else {
+            EventProd ev = new EventProd(promID, tfNom.getText(), Integer.parseInt(tfRefProd.getText()), Double.parseDouble(tfTaux.getText()), tfEvenement.getValue());
+            prod.modifier(ev);
+            JOptionPane.showMessageDialog(null, "Promotion modifiée avec succés");
+            refreshData();
+            btnAjouter.setDisable(false);
+            btnModifier.setDisable(true);
+            btnSupprimer.setDisable(true);
+            clear();
+        }
+    }
+
+    @FXML
+    private void supprimerPromo(ActionEvent event) {
+        sp.supprimer(promID);
+        JOptionPane.showMessageDialog(null, "Promotion supprimée avec succés !");
+        refreshData();
+        btnAjouter.setDisable(false);
+        btnModifier.setDisable(true);
+        btnSupprimer.setDisable(true);
+        clearprod();
+    }
+     private void refreshDataprod() {
+        listPromotions = prod.getAll();
+        TablePromotion.setItems(listPromotions);
+        showEvents();
+    }
+     private void clearprod() {
+        tfNom.clear();
+        tfRefProd.clear();
+        tfTaux.clear();
+        tfEvenement.setValue(null);
+    }
+     private void showEvents() {
+        List<Evenement> listE = new ServiceEvenement().getAll();
+
+        ArrayList<Evenement> libelles = new ArrayList<>();
+        for (Evenement e : listE) {
+            Evenement ev = new Evenement();
+            ev.setId(e.getId());
+            ev.setNom(e.getNom());
+            libelles.add(ev);
+        }
+        ObservableList<Evenement> choices = FXCollections.observableArrayList(libelles);
+        tfEvenement.setItems(choices);
+    }
+    @FXML
+    private void resetPromo(ActionEvent event) {
+         btnAjouter.setDisable(false);
+        btnModifier.setDisable(true);
+        btnSupprimer.setDisable(true);
+        clearprod();
+    }
+
+    @FXML
+    private void Btn_pdfPromo(ActionEvent event) {
+        Document doc = new Document() {};
+        String FILE_NAME = "E:\\java_pdf\\chillyfacts.pdf";
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\user\\Documents\\final\\PrincepsJava\\princeps\\src\\edu\\workshopjdbc3a48\\Planning.pdf"));
+            doc.open();
+            Paragraph p = new Paragraph();
+            p.add("Princeps");
+            p.setAlignment(Element.ALIGN_CENTER);
+            
+            
+            doc.add(p);
+            PdfPTable table = new PdfPTable(2); // 2 columns.
+            table.setSpacingBefore(20f);
+
+            PdfPCell cell1 = new PdfPCell(new Paragraph("Nom du produit"));
+            PdfPCell cell2 = new PdfPCell(new Paragraph("Taux"));
+          
+            cell1.setBackgroundColor(BaseColor.RED);
+            cell2.setBackgroundColor(BaseColor.RED);
+            cell1.setPadding(2);
+            table.addCell(cell1);
+            table.addCell(cell2);
+            listprod = prod.getAll();
+            for (int i=0; i<listprod.size();i++) {
+                String nom=listprod.get(i).getNom_produit();
+                String taux= listprod.get(i).getTaux().toString();
+
+              
+                table.addCell(nom);
+                table.addCell(taux);
+                
+            }
+            doc.add(table);
+            
+            Desktop.getDesktop().open(new File("C:\\Users\\user\\Documents\\final\\PrincepsJava\\princeps\\src\\edu\\workshopjdbc3a48\\Planning.pdf"));
+            
+            doc.close();
+            
+            
+        } catch (FileNotFoundException ex) {
+            
+        } catch (DocumentException ex) {
+            
+        } catch (IOException ex) { 
+        }
+    }
+
+    @FXML
+    private void imprimerPromo(ActionEvent event) {
+        // Création du job d'impression.
+            final PrinterJob printerJob = PrinterJob.createPrinterJob();
+           
+            // Affichage de la boite de dialog de configation de l'impression.    
+            if (printerJob.showPrintDialog(TablePromotion.getScene().getWindow())) {
+                final JobSettings settings = printerJob.getJobSettings();
+                final PageLayout pageLayout = settings.getPageLayout();
+                final double pageWidth = pageLayout.getPrintableWidth();
+                final double pageHeight = pageLayout.getPrintableHeight();
+                System.out.println(pageWidth);
+                System.out.println(Printer.getAllPrinters());
+                // Mise en page, si nécessaire.
+                // Lancement de l'impression.
+                if (printerJob.printPage(pageLayout, TablePromotion)) {
+                    // Fin de l'impression.
+                    printerJob.endJob();
+                }
+            }        
+    }
+
+        
+    
+
+    @FXML
+    private void rowClickedprod(MouseEvent event) {
+         btnAjouter.setDisable(true);
+        btnModifier.setDisable(false);
+        btnSupprimer.setDisable(false);
+        EventProd e = TablePromotion.getSelectionModel().getSelectedItem();
+        promID = e.getId();
+        tfNom.setText(e.getNom_produit());
+        tfRefProd.setText(String.valueOf(e.getRef_produit()));
+        tfTaux.setText(String.valueOf(e.getTaux()));
+        tfEvenement.setValue(e.getEvenement_id());
+    }
+    
+    
+    
+    
+    
+
+
+                            
+    
+    
+    
+    
+    
+    
 
     
 }

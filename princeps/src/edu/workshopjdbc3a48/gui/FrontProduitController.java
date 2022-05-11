@@ -19,6 +19,9 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -30,6 +33,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import main.MyListener;
 import sun.applet.Main;
 
@@ -440,5 +444,29 @@ public class FrontProduitController implements Initializable {
     
     // lehne ya hassen
     
+    
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("Profil.fxml"));
+        System.out.println("nextpage");
+        try {
+            Parent root = loader.load();
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene= new Scene(root);
+            stage.setScene(scene);
+            
+        } catch (IOException ex) {
+            System.out.println("error:"+ex.getMessage());
+        }
+    
+    }
+
+    @FXML
+    private void afficheEvents(MouseEvent event) throws IOException {
+        Parent rootEv = FXMLLoader.load(getClass().getResource("frontEvents.fxml"));//eli heya category
+        Scene gestionViewScene = new Scene(rootEv);
+        //les informations du stage
+        Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        window.setScene(gestionViewScene);
+        window.setMaximized(false);
+        window.show();
     }
 }

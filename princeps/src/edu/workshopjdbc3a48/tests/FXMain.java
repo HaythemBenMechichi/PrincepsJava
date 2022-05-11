@@ -35,7 +35,7 @@ public class FXMain extends Application {
        
         
  
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Login.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/frontProduit.fxml"));
     Parent root = loader.load();
     Scene scene = new Scene(root);
     primaryStage.setScene(scene);
