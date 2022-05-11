@@ -19,6 +19,6 @@ public interface iUserServices {
     public void modifierUser(User u); 
     public void supprimerUser( int id);
     public ArrayList<User> afficherUser();
-    public void modifierPassword (User u);
+    public void modifierPassword (String pass , int id);
     
 }

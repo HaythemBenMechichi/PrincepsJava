@@ -224,8 +224,10 @@ public class LoginController implements Initializable {
             }
             else
             {
-                
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Profile.fxml"));
+         
+              
+              
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Profil.fxml"));
         System.out.println("nextpage");
         try {
             Parent root = loader.load();

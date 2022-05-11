@@ -5,6 +5,12 @@
  */
 package edu.workshopjdbc3a48.gui;
 
+import Controller.UserSession;
+import edu.workshopjdbc3a48.entities.Admin;
+import edu.workshopjdbc3a48.entities.Client;
+import edu.workshopjdbc3a48.entities.Livreur;
+import edu.workshopjdbc3a48.entities.User;
+import edu.workshopjdbc3a48.services.UserServices;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -42,32 +49,70 @@ public class ProfilController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        TextNom.setText(UserSession.getName());
+        TextPrenom.setText(UserSession.getPrenom());
+        TextEmail.setText(UserSession.getEmail());
+        TextAge.setText(String.valueOf(UserSession.getAge()));
+        TextNumber.setText(UserSession.getNumber());
     }    
 
-    public void setTextNom(TextField TextNom) {
-        this.TextNom = TextNom;
+    public void setTextNom(String TextNom) {
+        this.TextNom.setText(TextNom);
     }
 
-    public void setTextPrenom(TextField TextPrenom) {
-        this.TextPrenom = TextPrenom;
+    public void setTextPrenom(String TextPrenom) {
+        this.TextPrenom.setText(TextPrenom);
     }
 
-    public void setTextEmail(TextField TextEmail) {
-        this.TextEmail = TextEmail;
+    public void setTextEmail(String TextEmail) {
+        this.TextEmail.setText(TextEmail);
     }
 
     public void setTextAge(String TextAge) {
         this.TextAge.setText(TextAge);
     }
 
-    public void setTextNumber(TextField TextNumber) {
-        this.TextNumber = TextNumber;
+    public void setTextNumber(String TextNumber) {
+        this.TextNumber.setText(TextNumber);
     }
     @FXML
     private void update(ActionEvent event) {
         
-        
+        UserServices US = new UserServices();
+
+  if (TextNom.getText().isEmpty() || TextPrenom.getText().isEmpty() || TextAge.getText().isEmpty() || TextNumber.getText().isEmpty()|| TextEmail.getText().isEmpty())
+  {    
+      JOptionPane.showMessageDialog(null, "Veuillez vérifier les champs !");
+        }
+ else
+        {
+             User u ;
+             if(UserSession.getRole().equals("Admin"))
+             {
+               u = new  Admin(UserSession.getId(),Integer.valueOf(TextAge.getText()),TextNom.getText(),TextPrenom.getText(),TextNumber.getText(),TextEmail.getText(),UserSession.getRole());
+             }
+             else if(UserSession.getRole().equals("Client"))
+             {
+                 u = new  Client(UserSession.getId(),Integer.valueOf(TextAge.getText()),TextNom.getText(),TextPrenom.getText(),TextNumber.getText(),TextEmail.getText(),UserSession.getRole());
+             }
+             else{
+                 u = new  Livreur(UserSession.getId(),Integer.valueOf(TextAge.getText()),TextNom.getText(),TextPrenom.getText(),TextNumber.getText(),TextEmail.getText(),UserSession.getRole());
+             }
+                System.out.println("u= "+ u.getId());
+           
+            System.out.println("p = "+u.getId());
+             US.modifierUser(u);
+            JOptionPane.showMessageDialog(null, "User modifié avec succés");
+            String pass=UserSession.getPassword();
+             UserSession.cleanUserSession();
+            UserSession userOnline = new UserSession(u.getId(),  u.getRole(), u.getEmail() , u.getName(), u.getPrenom(),  u.getNumber(),  u.getAge(), pass);
+            UserSession.setInstance(userOnline);
+        TextNom.setText(UserSession.getName());
+        TextPrenom.setText(UserSession.getPrenom());
+        TextEmail.setText(UserSession.getEmail());
+        TextAge.setText(String.valueOf(UserSession.getAge()));
+        TextNumber.setText(UserSession.getNumber());
+        }
     }
 
     @FXML
@@ -86,6 +131,8 @@ public class ProfilController implements Initializable {
 
     @FXML
     private void LogOut(ActionEvent event) {
+                    UserSession.cleanUserSession();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
         try {
             Parent root = loader.load();

@@ -69,7 +69,7 @@ public class UserServices implements iUserServices{
 
    
       public void modifierUser (User u){
-         String requete="UPDATE `user` SET `age`='"+u.getAge()+"',`email`='"+u.getEmail()+"',`nom`='"+u.getName()+"',`prenom`='"+u.getPrenom()+"',`number`='"+u.getNumber()+"',`role`='"+ u.getRole() +"' where `user`.`id`= "+u.getId();
+         String requete="UPDATE `user` SET `age`='"+u.getAge()+"',`nom`='"+u.getName()+"',`prenom`='"+u.getPrenom()+"',`number`='"+u.getNumber()+"',`email`='"+u.getEmail()+"',`role`='"+ u.getRole() +"' where `user`.`id`= "+u.getId();
         
 
          
@@ -81,8 +81,8 @@ public class UserServices implements iUserServices{
             System.out.println("erreur lors d "+ex.getMessage());
         }
      }
-      public void modifierPassword (User u){
-         String requete="UPDATE `user` SET `password`='"+u.getPassword()+"' where `user`.`id`= "+u.getId();
+      public void modifierPassword (String pass , int id){
+         String requete="UPDATE `user` SET `password`='"+pass+"' where `user`.`id`= "+id;
          
 
          
