@@ -16,7 +16,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="AncAll" prefHeight="806.0" prefWidth="1051.0" styleClass="grad" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.AfficheProduitController">
    <children>
-      <AnchorPane fx:id="ancProduit" layoutX="197.0" prefHeight="806.0" prefWidth="855.0" styleClass="grad" stylesheets="@style.css" visible="false">
+      <AnchorPane fx:id="ancProduit" layoutX="197.0" prefHeight="806.0" prefWidth="855.0" styleClass="grad" stylesheets="@style.css">
          <children>
             <TableView fx:id="tableProd" layoutX="293.0" layoutY="129.0" onMouseClicked="#rowClicked" prefHeight="336.0" prefWidth="573.0" stylesheets="@style.css">
               <columns>
@@ -83,7 +83,7 @@
                   <Image url="@../272263012_547330842902546_154201747613777162_n.png" />
                </image>
             </ImageView>
-            <Button layoutY="313.0" mnemonicParsing="false" onAction="#Userfen" prefHeight="51.0" prefWidth="201.0" styleClass="trans-btn-white-border" text="User">
+            <Button layoutY="313.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="201.0" styleClass="trans-btn-white-border" text="User">
                <font>
                   <Font size="26.0" />
                </font></Button>
@@ -112,7 +112,7 @@
                <effect>
                   <Blend />
                </effect></Button>
-            <Button layoutX="-2.0" layoutY="719.0" mnemonicParsing="false" onAction="#LogOut" prefHeight="51.0" prefWidth="200.0" styleClass="trans-btn-white-border" text="log out">
+            <Button layoutX="-2.0" layoutY="719.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="200.0" styleClass="trans-btn-white-border" text="log out">
                <font>
                   <Font size="26.0" />
                </font>
@@ -163,41 +163,6 @@
                   <Font size="35.0" />
                </font>
             </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane id="AnchorPane" fx:id="ancuser" layoutX="201.0" prefHeight="806.0" prefWidth="866.0">
-         <children>
-            <TableView fx:id="Tusers" layoutX="291.0" layoutY="53.0" onMouseClicked="#rowClickedTUser" prefHeight="302.0" prefWidth="495.0">
-               <columns>
-                  <TableColumn fx:id="ColNom" minWidth="0.0" prefWidth="70.0" text="Nom" />
-                  <TableColumn fx:id="Colprenom" text="Prenom" />
-                  <TableColumn fx:id="ColAge" prefWidth="52.0" text="Age" />
-                  <TableColumn fx:id="Colemail" prefWidth="132.0" text="Email" />
-                  <TableColumn fx:id="Colrole" prefWidth="62.0" text="Role" />
-                  <TableColumn fx:id="ColNumber" prefWidth="54.0" text="number" />
-                  <TableColumn fx:id="ColId" prefWidth="75.0" text="Column X" visible="false" />
-               </columns>
-            </TableView>
-            <Button layoutX="700.0" layoutY="360.0" mnemonicParsing="false" onAction="#Delete" styleClass="b" text="Suprimer" />
-            <Button layoutX="378.0" layoutY="583.0" mnemonicParsing="false" onAction="#Update" styleClass="b" text="Modifier" />
-            <Label fx:id="TFNOM" layoutX="61.0" layoutY="312.0" text="Nom" />
-            <Label layoutX="61.0" layoutY="359.0" text="Prenom" />
-            <Label layoutX="61.0" layoutY="395.0" text="Age" />
-            <Label layoutX="61.0" layoutY="437.0" text="Role" />
-            <Label layoutX="61.0" layoutY="482.0" text="Email" />
-            <TextField fx:id="Tfnom" layoutX="128.0" layoutY="308.0" />
-            <TextField fx:id="Tfprenom" layoutX="128.0" layoutY="355.0" />
-            <TextField fx:id="Tfage" layoutX="128.0" layoutY="400.0" />
-            <TextField fx:id="Tfemail" layoutX="128.0" layoutY="487.0" />
-            <TextField fx:id="Tfnumber" layoutX="128.0" layoutY="533.0" />
-            <Label layoutX="68.0" layoutY="537.0" text="Number" />
-            <TextField fx:id="Tfid" layoutX="467.0" layoutY="484.0" prefHeight="25.0" prefWidth="27.0" visible="false" />
-            <ChoiceBox fx:id="chRole" layoutX="128.0" layoutY="442.0" prefWidth="150.0" styleClass="text-field" />
-            <Button layoutX="607.0" layoutY="360.0" mnemonicParsing="false" onAction="#banUser" prefHeight="25.0" prefWidth="65.0" styleClass="b" stylesheets="@style.css" text="ban" />
-            <Button layoutX="512.0" layoutY="360.0" mnemonicParsing="false" onAction="#unban" prefHeight="25.0" prefWidth="65.0" styleClass="b" stylesheets="@style.css" text="Unban" />
-            <Button layoutX="152.0" layoutY="183.0" mnemonicParsing="false" onAction="#stat" prefHeight="42.0" prefWidth="84.0" styleClass="b" stylesheets="@style.css" text="stat des role" />
-            <Button layoutX="184.0" layoutY="61.0" mnemonicParsing="false" onAction="#recherche" styleClass="b" stylesheets="@style.css" text="rechercher" />
-            <ChoiceBox fx:id="chRoleRech" layoutX="15.0" layoutY="61.0" prefWidth="150.0" styleClass="text-field" />
          </children>
       </AnchorPane>
    </children>
