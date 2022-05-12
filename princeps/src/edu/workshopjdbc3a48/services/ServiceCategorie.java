@@ -7,7 +7,7 @@ package edu.workshopjdbc3a48.services;
 
 import edu.workshopjdbc3a48.entities.Produit;
 import edu.workshopjdbc3a48.entities.Categorie;
-import edu.workshopjdbc3a48.entities.SousCategorie;
+import edu.workshopjdbc3a48.entities.Sous_categorie;
 import edu.workshopjdbc3a48.utils.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -51,22 +51,10 @@ public class ServiceCategorie implements IService<Categorie>{
     }
     
    
-     public void supprimerSous(int id) {
-        try {
-            String req = "DELETE FROM `sous_categorie` WHERE id = " + id;
-            Statement st = cnx.createStatement();
-            st.executeUpdate(req);
-            System.out.println("Sous categorie deleted !");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    
     @Override
     public void modifier(Categorie p) {
         try {
-            String req = "UPDATE categorie SET `nom_c` = '" + p.getNom_c() + "', `stat_c` = '" + p.getStat_c() +  "', `image_car` = '" + p.getImage_car()   +  "' WHERE `categorie`.`id` = " + p.getId();
+            String req = "UPDATE categorie SET `nom_c` = '" + p.getNom_c() + "', `stat_c` = '" + p.getStat_c() +  "', `image_car` = '" + p.getImage_car()   +  "' WHERE `produit`.`id` = " + p.getId();
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("categorie updated !");
@@ -74,13 +62,20 @@ public class ServiceCategorie implements IService<Categorie>{
             System.out.println(ex.getMessage());
         }
     }
-
+    
+    
+    
+    
+    
+    
+    
+    
     
     @Override
     public List<Categorie> getAll() {
         List<Categorie> list = new ArrayList<>();
         try {
-            String req = "Select * from categorie";
+            String req = "Select * from produit";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
@@ -96,8 +91,6 @@ public class ServiceCategorie implements IService<Categorie>{
         return list;
     }
 
-    
-    
     
     
     
@@ -126,11 +119,11 @@ public class ServiceCategorie implements IService<Categorie>{
     
     
         
-    public List<SousCategorie> geAllSousCat()
+    public List<Sous_categorie> geAllSousCat()
     {
-       List<SousCategorie> list = new ArrayList<>();
+       List<Sous_categorie> list = new ArrayList<>();
 
-        SousCategorie cp = new SousCategorie();
+        Sous_categorie cp = new Sous_categorie();
          try {
             String req = "Select * from sous_categorie" ;
             Statement st = cnx.createStatement();
@@ -138,7 +131,7 @@ public class ServiceCategorie implements IService<Categorie>{
             while(rs.next()){
                 Categorie cat= new Categorie();
                 cat=getCat(rs.getInt("id_cat_id"));
-                SousCategorie p = new SousCategorie(rs.getInt("id"), rs.getInt("stat_sc"), rs.getString("nom_sous"),cat);
+                Sous_categorie p = new Sous_categorie(rs.getInt("id"), rs.getInt("stat_sc"), rs.getString("nom_sous"),cat);
             //    System.out.println("p="+c);
                 list.add(p);
              }
@@ -151,10 +144,6 @@ public class ServiceCategorie implements IService<Categorie>{
     
     
  
-    
-    
-    
-    
     @Override
     public void ajout(Produit P) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

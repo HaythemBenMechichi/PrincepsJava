@@ -14,6 +14,7 @@ import java.sql.SQLException;
  * @author si haythem
  */
 public class DataSource {
+    
     private Connection cnx;
     private static DataSource instance;
     private final String USER = "root";
