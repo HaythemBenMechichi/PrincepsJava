@@ -6,7 +6,7 @@
 package edu.workshopjdbc3a48.services;
 
 import edu.workshopjdbc3a48.entities.Produit;
-import edu.workshopjdbc3a48.entities.Sous_categorie;
+import edu.workshopjdbc3a48.entities.SousCategorie;
 import java.util.List;
 
 /**

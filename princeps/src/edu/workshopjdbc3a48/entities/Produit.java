@@ -10,11 +10,11 @@ import java.util.Objects;
 /**
  * @author abdelazizmezri
  */
-public class Produit {
+ public class Produit {
     private int id,quantite;
     private String libelle, description,image_p;
     private float prix;
-    Sous_categorie sous = new Sous_categorie();
+    SousCategorie sous = new SousCategorie();
     
     
     public Produit()
@@ -26,7 +26,7 @@ public class Produit {
     
     
     
-    public Produit(int id,String libelle ,int quantite, String description, String image_p, float prix,Sous_categorie sous) {
+    public Produit(int id,String libelle ,int quantite, String description, String image_p, float prix,SousCategorie sous) {
         this.quantite = quantite;
         this.libelle = libelle;
         this.description = description;
@@ -40,7 +40,7 @@ public class Produit {
     
     
     
-    public Produit(String libelle ,int quantite, String description, String image_p, float prix,Sous_categorie sous) {
+    public Produit(String libelle ,int quantite, String description, String image_p, float prix,SousCategorie sous) {
         this.quantite = quantite;
         this.libelle = libelle;
         this.description = description;
@@ -65,7 +65,7 @@ public class Produit {
         return description;
     }
 
-    public String getImage_p() {
+            public String getImage_p() {
         return image_p;
     }
 
@@ -77,11 +77,11 @@ public class Produit {
         this.id = id;
     }
 
-    public Sous_categorie getA() {
+    public SousCategorie getA() {
         return sous;
     }
 
-    public void setA(Sous_categorie a) {
+    public void setA(SousCategorie a) {
         this.sous = a;
     }
     

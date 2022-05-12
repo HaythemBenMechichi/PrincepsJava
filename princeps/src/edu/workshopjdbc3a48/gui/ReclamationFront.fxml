@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshopjdbc3a48.gui.ReclamationFrontController">
+   <children>
+      <BorderPane prefHeight="810.0" prefWidth="1315.0" stylesheets="@../values/style.css">
+         <left>
+            <VBox prefHeight="200.0" prefWidth="435.0" style="-fx-background-color: #5356;" styleClass="right-bar" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0" stylesheets="@../values/style.css">
+                     <children>
+                        <Label prefHeight="49.0" prefWidth="396.0" text="Espace reclamation" textFill="#512323">
+                           <font>
+                              <Font name="Cambria Bold" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="47.0" prefWidth="319.0" stylesheets="@../../../../../../../../Desktop/Nouveau%20dossier/src/values/style.css" VBox.vgrow="NEVER">
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <TextField fx:id="searchbox" onKeyPressed="#rechercher" prefHeight="40.0" prefWidth="235.0" promptText="Taper pour chercher" styleClass="transparent" stylesheets="@../../../../../../../../Desktop/Nouveau%20dossier/src/values/style.css">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../../../../../../../../Desktop/Nouveau%20dossier/src/values/style.css" text="Rechercher" textFill="WHITE" />
+                     </children>
+                     <styleClass>
+                        <String fx:value="search-box" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </HBox>
+                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                  <VBox alignment="CENTER" prefHeight="571.0" prefWidth="357.0" style="-fx-background-color: #1111;">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label contentDisplay="CENTER" prefHeight="48.0" prefWidth="295.0" text="Ajouter votre reclamation ici" textFill="#eed9ee">
+                           <font>
+                              <Font name="Cambria" size="20.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="60.0" prefWidth="335.0">
+                           <VBox.margin>
+                              <Insets left="20.0" top="30.0" />
+                           </VBox.margin>
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                                 <children>
+                                    <Separator prefHeight="0.0" prefWidth="118.0">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </Separator>
+                                    <Separator prefHeight="0.0" prefWidth="118.0">
+                                       <opaqueInsets>
+                                          <Insets left="50.0" />
+                                       </opaqueInsets>
+                                    </Separator>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <ImageView fitHeight="268.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../WETRAN~1/PRINCE~1/PRINCE~1/princeps/src/edu/WORKSH~1/gui/FEEDBA~1.PNG" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <children>
+                              <Separator prefHeight="0.0" prefWidth="118.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Separator>
+                              <Separator prefHeight="0.0" prefWidth="118.0">
+                                 <opaqueInsets>
+                                    <Insets left="50.0" />
+                                 </opaqueInsets>
+                              </Separator>
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#ajouter_reclamation" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../../../../../../../../Desktop/hama/Sponsor&amp;publicité/src/com/edu/campy/values/style.css" text="Ajouter" textFill="#828282">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <styleClass>
+                        <String fx:value="chosen-fruit-card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </VBox>
+                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="16.0" prefWidth="616.0">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="62.0" prefWidth="616.0">
+                     <children>
+                        <Pane prefHeight="84.0" prefWidth="96.0" />
+                        <HBox alignment="CENTER" prefHeight="62.0" prefWidth="770.0" style="-fx-background-color: #5356;" styleClass="shopping-online-card">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="62.0" prefWidth="241.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="42.0" prefWidth="198.0" text="Reclamation" textAlignment="CENTER" textFill="#1b0101">
+                                       <font>
+                                          <Font name="Cambria Bold" size="31.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="100.0" prefWidth="32.0" HBox.hgrow="ALWAYS" />
+                        <Pane prefHeight="84.0" prefWidth="96.0" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="42.0" stylesheets="@../../../../../../../../Desktop/Nouveau%20dossier/src/build/classes/values/style.css" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="scroll" prefHeight="691.0" prefWidth="630.0" styleClass="transparent" stylesheets="@../../../../../../../../Desktop/Nouveau%20dossier/src/values/style.css">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                           <content>
+                              <ListView fx:id="list_reclamation" onMouseClicked="#select" prefHeight="706.0" prefWidth="628.0" style="-fx-background-color: #1111;" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+         <right>
+            <Pane fx:id="scrol_right" prefHeight="670.0" prefWidth="224.0" style="-fx-background-color: #5356;" styleClass="right-bar" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="button_ajouter" layoutX="55.0" layoutY="532.0" mnemonicParsing="false" onAction="#ajouter_terminer" prefHeight="31.0" prefWidth="114.0" styleClass="add-btn" text="Ajouter" textFill="#828282" visible="false">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="button_supprimer" layoutX="55.0" layoutY="532.0" mnemonicParsing="false" onAction="#supprimer_terminer" prefHeight="31.0" prefWidth="113.0" styleClass="add-btn" text="Supprimer" textFill="#828282" visible="false">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="sujet" alignment="CENTER" layoutX="6.0" layoutY="390.0" prefHeight="122.0" prefWidth="210.0" promptText="Description ..." visible="false" />
+                  <Label fx:id="label_id" alignment="CENTER" layoutX="33.0" layoutY="315.0" prefHeight="28.0" prefWidth="217.0" visible="false" />
+                  <Button layoutX="60.0" layoutY="32.0" mnemonicParsing="false" onAction="#retour" onMouseClicked="#retour" onMousePressed="#retour" prefHeight="31.0" prefWidth="105.0" styleClass="add-btn" stylesheets="@../../../../../../../../Desktop/hama/Sponsor&amp;publicité/src/com/edu/campy/values/style.css" text="Retour" textFill="#0b00ff" />
+                  <ComboBox fx:id="combo_niveau" layoutX="7.0" layoutY="350.0" prefHeight="31.0" prefWidth="210.0" promptText="Niveau" visible="false" />
+                  <ComboBox fx:id="combo_type" layoutX="9.0" layoutY="307.0" prefHeight="31.0" prefWidth="208.0" promptText="Type" visible="false" />
+               </children>
+            </Pane>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -15,6 +15,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import Controller.MaillerController;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.*;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  *
@@ -23,11 +31,11 @@ import javafx.stage.Stage;
 public class FXMain extends Application {
     
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException, MessagingException {
        
         
-        
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AfficheProduit.fxml"));
+ 
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/frontProduit.fxml"));
     Parent root = loader.load();
     Scene scene = new Scene(root);
     primaryStage.setScene(scene);
